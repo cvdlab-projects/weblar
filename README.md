@@ -9,12 +9,13 @@ Web LAR project
 * Fabio Cumbo
 * Fabrizio Rebecca
 * Luca Menichetti
+* Oscar Eijsermans
 
 ## License
 
 (The MIT License)
 
-Copyright (c) 2013 Andrea Somma, Elisa Lamberti, Fabio Cumbo, Fabrizio Rebecca, Luca Menichetti
+Copyright (c) 2013 Andrea Somma, Elisa Lamberti, Fabio Cumbo, Fabrizio Rebecca, Luca Menichetti, Oscar Eijsermans
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

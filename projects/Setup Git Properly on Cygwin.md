@@ -31,7 +31,8 @@ Se vi state chiedendo perchè non mi basti la git-bash la risposta è [questa](h
     
 Adesso la parte davvero interessante. Spostiamo la home nella classica cartella /Users/vostronomeUtente di windows e potenziamo per bene la shell, quindi:
 
-    # SCONSIGLIO IL COPIA E INCOLLA SELVAGGIO
+    # NO COPIA E INCOLLA SELVAGGIO
+    # Modificate i comandi con il vostro nome utente
     
     cd /cygdrive/c/Users/vostroNomeUtente
     

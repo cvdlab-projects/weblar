@@ -1,6 +1,6 @@
 ## Guida alla configurazione ottimale di git su Cygwin
 
-Vi Mostro in mostro in pochi passaggi come ho configurato Cygwin con git sul mio computer (WIN 8). Ha poco a che fare col i progetti di biomedica, quindi non è un file ufficiale e pertanto non scriverò in inglese.
+Vi Mostro in mostro in pochi passaggi come ho configurato Cygwin con git sul mio computer (WIN 8). Ha poco a che fare con i progetti di biomedica, quindi non è un file ufficiale e pertanto non scriverò in inglese.
 Se vi state chiedendo perchè non mi basti la git-bash la risposta è [questa](http://www.memecreator.org/static/images/memes/1195026.jpg).
 
 1) Scaricare [da qui](http://cygwin.com/mirrors.html) l'eseguibile selezionando preferibilmente il sito del garr su http:
@@ -82,4 +82,4 @@ Per salvare `Ctrl+O` per chiudere `Ctrl+X`.
   * Se avrete un errore relativo a __git_ps1 c'è qualche problema con questo comando qui
     `cp /cygdrive/c/cygwin64/etc/bash_completion.d/git /home/vostroNomeUtente/.git-completion.sh`
 
-**Prendete questa guida come spunto e non come verità assoluta, potrei essermi dimenticato qualche cosa di fondamentale.**
+**Prendete questa guida come spunto e non come verità assoluta, potrei essermi dimenticato qualche cosa di fondamentale, tra questi l'italiano.**

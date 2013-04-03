@@ -29,6 +29,8 @@ Se vi state chiedendo perchè non mi basti la git-bash la risposta è [questa](h
     $ echo $HOME
     /home/vostroNomeUtente
     
+* se invece la HOME è già la stessa di windows, create lì il file `.bashrc` e aggiungete ` . "$HOME/.bashrc"` nel file `cygwin64/etc/profile`.
+
 Adesso la parte davvero interessante. Spostiamo la home nella classica cartella /Users/vostronomeUtente di windows e potenziamo per bene la shell, quindi:
 
     # NO COPIA E INCOLLA SELVAGGIO
@@ -73,7 +75,7 @@ poi modifichiamo .bashrc con nano `nano .bashrc` e in fondo aggiungiamo (scorrer
     source $CYGWIN_HOME/.git-completion.sh
     PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]$(__git_ps1 " (%s)")\n\$ '
 
-    # Fondamentale
+    # Fondamentale per chi non ha la HOME settata
     cd
 
 Per salvare `Ctrl+O` per chiudere `Ctrl+X`.

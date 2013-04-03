@@ -8,7 +8,7 @@
 
 ### (to do)
 
-## First Project
+## First Project [link](Extension of the LAR.js and LAR-DEMO.js/)
 
 Extension of the `LAR.js` and `LAR-DEMO.js` projects with `convex cells`
 
@@ -19,7 +19,7 @@ Extension of the `LAR.js` and `LAR-DEMO.js` projects with `convex cells`
 | Fabio Cumbo   |               |             |
 
 
-## Second Project
+## Second Project [link](Matrix computation web-service/)
 
 Integration of the matrix computation web-service
 
@@ -29,7 +29,7 @@ Integration of the matrix computation web-service
 | Luca Menichetti              |               |             |
 
 
-## Third Project
+## Third Project [link](PDB visualization service/)
 
 Integration of `PDB` visualization service
 

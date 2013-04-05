@@ -84,4 +84,10 @@ Per salvare `Ctrl+O` per chiudere `Ctrl+X`.
   * Se avrete un errore relativo a __git_ps1 c'è qualche problema con questo comando qui
     `cp /cygdrive/c/cygwin64/etc/bash_completion.d/git /home/vostroNomeUtente/.git-completion.sh`
 
+7) Per installare le chiavi ssh, andate nella cartella `CYGWIN_HOME` e create le chiavi ssh o copiate la cartella `.ssh` contenente i file.
+Per impostare il file `id_rsa` con i permessi 600 dovrete prima cambiare gruppo ai file
+        chgrp -R Users .ssh/*
+        chmod 600 .ssh/*
+
+
 **Prendete questa guida come spunto e non come verità assoluta, potrei essermi dimenticato qualche cosa di fondamentale, tra questi l'italiano.**

@@ -17,12 +17,13 @@ lavorare sul nuovo ramo creato dopo essersi spostati su di esso:
 Verosimilmente, quando si dovranno unire i due rami, ci sarà bisogno di fondere le modifiche apportate al master con il nuovo codice contenuto nella branch.
 Se invece vogliamo aggiornare il ramo creato con le modifiche effettuate nel master, basta che quel ramo venga dato il comando:
 
-  * `git pull origin master`
+  * `git pull origin master` : se gli aggiornamenti del master non sono ancora stati scaricati
+  * `git merge master` : altrimenti
 
 Merge
 -----
 
-Per effettuare la fusione, dal ramo master diamo il comando
+Per effettuare la fusione, scarichiamo il ramo con un pull e dal ramo master diamo il comando
 
   * `git merge nome-branch`.
 
@@ -90,10 +91,42 @@ Un esempio. Tenendo in considerazione un file `prova.txt` creato nel branch *mas
     $ cat prova.txt
     Ecco. Provare non costa proprio niente. Visto?
 
-  Il conflitto ancora non è risolto perchè bisogna comunicare a git che è tutto ok.
+  Ora con `git diff` possiamo vedere cosa c'era nelle due versioni dei file e cosa c'è ora.
   
+    Luca@Tiger ~/git/test-repo  (master|MERGING)
+    $ git diff
+    diff --cc prova.txt
+    index 71171d8,a3b81e0..0000000
+    --- a/prova.txt
+    +++ b/prova.txt
+    @@@ -1,1 -1,1 +1,1 @@@
+    - Ecco. Provare non costa niente.
+     -Provare non costa proprio niente.
+    ++Ecco. Provare non costa proprio niente. Visto?
+
+  Il conflitto ancora non è risolto perchè bisogna comunicare a git che è tutto ok, infatti se diamo il comando `git status` ci dirà che c'è un file che è stato modificato da entrambe le parti
+  
+    $ git status
+    # On branch master
+    # Unmerged paths:
+    #   (use "git add/rm <file>..." as appropriate to mark resolution)
+    #
+    #       both modified:      prova.txt
+    #
+    no changes added to commit (use "git add" and/or "git commit -a")
+
+    $ git status -s
+    UU prova.txt
+
+  e per fare ciò basta dare il comando `git add prova.txt` e committare. Il merge è finito andate in pace.
+  
+###2) PULL DAL BRANCH
+
+  Stessa situazione iniziale, ma l'aggiornamente viene fatto nel ramo *develop* tramite il comando `git pull origin master` o `git merge`. Stessa procedura per risolvere il conflitto.
     
 Importante, o in ogni caso indubbiamente comodo, è avere tra parentesi il nome del branch in cui si è posizionati. In alternativa consiglio di creare un alias per non impazzire nello scrivere ripetutamente `git branch`; per esempio `alias gb='git branch -v'`.
+
+_______________________
 
 ## Comandi utili per le branch
 

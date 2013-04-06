@@ -4,3 +4,4 @@ In this folder are grouped together some useful information to the end of the pr
 
 - [Intructions for an easy and productive code developing](Instructions.md)
 - [Guide to the optimal configuration of git on Cygwin](Setup Git Properly on Cygwin.md)
+- [How to use branchs and merge them](How to merge branches.md)

@@ -1,4 +1,4 @@
-Come usare i branch
+Come "fondere" i branch
 ===================
 
 Appunti su come utilizzare i branch.
@@ -50,7 +50,7 @@ Un esempio. Tenendo in considerazione un file `prova.txt` creato nel branch *mas
     $ cat prova.txt
     Provare non costa proprio niente.
   
-  Mentre nel *master* (occhio se fate questa prova sulla stessa macchina con `git chechout master` avrete un merge automatico)
+  Mentre nel *master* (occhio se fate questa prova sulla stessa shell e cambiate ramo con `git chechout master` avrete un merge automatico)
   
     Luca@Tiger ~/git/test-repo (master)
     $ cat prova.txt

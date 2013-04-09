@@ -10,11 +10,19 @@
 
 **Extension of the `LAR.js` and `LAR-DEMO.js` projects with `convex cells`**
 
-| Task Name     | Assigned to   | Notes       |
+1) Implementation of the cartesian product function between convex cells.
+  * [a] Study of the "larProduct" function, currently present in lar.py.
+  * [b] Integration of the lar.js project with this function, which will allow to do the product between convex cells and which is based on the "larProduct" function.   
+
+2) Generalization of the "extract" function present in lar.js for simplicial complexes. 
+  * [a] Study of the "larFacets" function (and it's implemented algorithm) present in lar.py. 
+  * [b] Reimplementation of that function in the lar.js project, currently provided with an extraction function only on simplexes. 
+
+| Assigned to       | Tasks         | Notes       |
 | ------------- |-------------  | ----------- |
-| Andrea Somma  |               |             |
-| Elisa Lamberti|               |             |
-| Fabio Cumbo   |               |             |
+| Andrea Somma  |  1             |             |
+| Elisa Lamberti|  2             |             |
+| Fabio Cumbo   |  2             |             |
 
 
 ## Second Project [link](Matrix computation web-service/)

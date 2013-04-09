@@ -6,11 +6,9 @@
 
 # Summary
 
-### (to do)
-
 ## First Project [link](Extension of the LAR.js and LAR-DEMO.js/)
 
-Extension of the `LAR.js` and `LAR-DEMO.js` projects with `convex cells`
+**Extension of the `LAR.js` and `LAR-DEMO.js` projects with `convex cells`**
 
 | Task Name     | Assigned to   | Notes       |
 | ------------- |-------------  | ----------- |
@@ -21,17 +19,29 @@ Extension of the `LAR.js` and `LAR-DEMO.js` projects with `convex cells`
 
 ## Second Project [link](Matrix computation web-service/)
 
-Integration of the matrix computation web-service
+**Integration of the matrix computation web-service**
 
-| Task Name     | Assigned to   | Notes       |
-| ------------- |-------------  | ----------- |
-| Fabrizio Rebecca  |               |             |
-| Luca Menichetti              |               |             |
+(1) Localization of code's sections that use matrix's operation
+  * [a] Creation on an interface that links with the computation layer
+
+(2) Creation of a proper layer that implements the computation of matrix's operation hiding the logic implementation
+  * [a] Management of the matrix format with opportune encoding for the forwarding on the network 
+  * [b] Realitazione of a procedure for the comunication's enstablishment with the web service on a public server
+  * [c] Answer management and decoding
+
+(3) Setup a web service that offers such operation online
+  * [a] Acquisition, request management and result forwarding
+
+
+| Assigned to       | Tasks         | Notes       |
+| -------------     |-------------  | ----------- |
+| Fabrizio Rebecca  | 1-a, 2-a, 2-c | ---         |
+| Luca Menichetti   | 1-a, 2-b, 3-a | ---         |
 
 
 ## Third Project [link](PDB visualization service/)
 
-Integration of `PDB` visualization service
+**Integration of `PDB` visualization service**
 
 | Task Name     | Assigned to   | Notes       |
 | ------------- |-------------  | ----------- |

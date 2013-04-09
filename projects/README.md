@@ -20,9 +20,9 @@
 
 | Assigned to       | Tasks         | Notes       |
 | ------------- |-------------  | ----------- |
-| Andrea Somma  |  1             |             |
-| Elisa Lamberti|  2             |             |
-| Fabio Cumbo   |  2             |             |
+| Andrea Somma  |  1             | ---            |
+| Elisa Lamberti|  2             | ---            |
+| Fabio Cumbo   |  2             | ---            |
 
 
 ## Second Project [link](Matrix computation web-service/)
@@ -51,9 +51,15 @@
 
 **Integration of `PDB` visualization service**
 
-| Task Name     | Assigned to   | Notes       |
+(1) Integration of webpdb and webmol
+  * [a] Identify the function structure of WebMOL and WebPDB
+  * [b] Identify the connection between the two applications
+  * [c] Definition of an connection interface between the two applications
+  * [d] Structure the two projects in one project
+
+| Assigned to       | Tasks         | Notes       |
 | ------------- |-------------  | ----------- |
-| Oscar Eijsermans              |               |             |
+| Oscar Eijsermans              |  1             | ---             |
 
 
  

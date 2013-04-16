@@ -1,4 +1,4 @@
 Weblar gh-pages
-======
+===============
 
-Web LAR project - gh-pages branch
+[http://cvdlab-bio.github.io/weblar/](http://cvdlab-bio.github.io/weblar/)

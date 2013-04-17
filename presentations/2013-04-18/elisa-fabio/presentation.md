@@ -22,5 +22,3 @@ The algorithm's steps:
 ===
 * Computation of the adjacency matrix Ad: computed by matrix multiplication between the characteristic matrix Md and its traspose. Each element aij would represent the number of shared cells between cell i and cell j.
 * Computation of facets: having a generic aij greater or equal to the dimension d of cells means that the cell i and the cell j must share a common facet, that can be computed as integer product of rows i and j of Md. The generated characteristic vector gives a row of the output matrix Md-1.
-
-!

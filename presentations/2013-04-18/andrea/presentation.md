@@ -1,6 +1,6 @@
 Weblar - Part one: 
 Extension of the `LAR.js` and `LAR-DEMO.js` projects with `convex cells`
-===
+
 Point one: Implementation of the cartesian product function between convex cells.
 
 * Study of the "larProduct" function, currently present in lar.py.

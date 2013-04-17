@@ -1,13 +1,14 @@
 Integration of PDB visualization servive
-===
+========================================
 
 Final goal: integration of WebMOL and WebPDB projects
 
-- step 1: identify the structure and functionalities of WebPDB and WebMOL (done)
+* step 1: identify the structure and functionalities of WebPDB and WebMOL (done)
 	
 	- data structure 
 	
 	- comunication protocols
+
 !
 
 - step 2: identify the connections between the two projects

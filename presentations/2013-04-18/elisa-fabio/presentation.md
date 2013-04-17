@@ -1,6 +1,6 @@
 Weblar - Task one: 
 ===
-Extension of the `LAR.js` and `LAR-DEMO.js` projects with convex cells
+Extension of the `LAR.js` and `LAR-DEMO.js` projects with `convex cells`
 
 !
 

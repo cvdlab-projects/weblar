@@ -9,8 +9,8 @@ Integration of `PDB` visualization servive
 Integration of `WebMOL` and `WebPDB` projects
 
 !
-
-* step 1: identify the structure and functionalities of WebPDB and WebMOL (done)
+####Step (1)
+* Identify the structure and functionalities of WebPDB and WebMOL (done)
 	
 	- data structure 
 	
@@ -18,12 +18,15 @@ Integration of `WebMOL` and `WebPDB` projects
 
 !
 
-- step 2: identify the connections between the two projects
+####Step (2)
+
+Identify the connections between the two projects
 
 	- make changes where necessary
 		
 		- example: WebMOL has stored only the basic amino acids
 		 -> make possible to load other amino acids 
 
+####Step (3)
 
-- step 3: merge the two projects in one project
+Merge the two projects in one project

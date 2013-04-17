@@ -1,12 +1,41 @@
 var date = new Date();
 
-console.log();
-console.log(date.getHours()+":"+"This is a test");
-console.log("You are executing test.js");
-console.log();
+var getTime = function(){
+	return date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+}
 
-console.log("Generate matrix with ones.");
+var log = function(string){
+	if (string === undefined){
+		console.log();
+		return;
+	}	
+	console.log("["+getTime()+"] "+string);
+}
+
+var print = function(string){
+	if (string === undefined){
+		return;
+	}	
+	console.log(string);
+}
+
+
+log();
+log("This is a test");
+log("You are executing test.js");
+log();
+log("Generate matrix with ones");
+
 var matrixWithOnes = lar.utils.ones(6,5);
+print(matrixWithOnes);
 
-console.log(matrixWithOnes);
+log("Change first row");
+matrixWithOnes[0] = [1,2,3,4,5];
+print(matrixWithOnes);
 
+log("test: utils.select")
+var selectedRow = lar.utils.select(matrixWithOnes,[1]);
+print(selectedRow);
+
+var selectedRows = lar.utils.select(matrixWithOnes,[1,1]);
+print(selectedRows);

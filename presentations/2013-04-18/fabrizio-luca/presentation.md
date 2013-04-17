@@ -19,7 +19,7 @@ Summary
 
 3) Setup a web service that offers such operation online
 
-
+!
 
 ## Point (1) - Localization of code's sections that use matrix's operation
 

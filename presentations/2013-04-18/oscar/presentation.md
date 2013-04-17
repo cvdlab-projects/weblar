@@ -1,22 +1,21 @@
-Slide 1 
+Integration of PDB visualization servive
 ===
-Content slide 1
 
+Final goal: integration of WebMOL and WebPDB projects
+
+- step 1: identify the structure and functionalities of WebPDB and WebMOL (done)
+	
+	- data structure 
+	
+	- comunication protocols
 !
 
-Slide 2 
-===
-* Content slide 2
-* Content slide 2
+- step 2: identify the connections between the two projects
 
-!
+	- make changes where necessary
+		
+		- example: WebMOL has stored only the basic amino acids
+		 -> make possible to load other amino acids 
 
-Slide 3 
-===
-* Content slide 3 *
-** Content slide 3 **
 
-		ioefifofewioefh
-[google link](www.google.com)
-
-!
+- step 3: merge the two projects in one project

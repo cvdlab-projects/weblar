@@ -4,7 +4,8 @@ Extension of the `LAR.js` and `LAR-DEMO.js` projects with `convex cells`
 
 !
 
-Point (sub-task) one: 
+Point (sub-task) one:
+===
 
 Implementation of the cartesian product function between convex cells.
 

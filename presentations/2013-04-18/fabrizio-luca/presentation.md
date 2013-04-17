@@ -23,17 +23,23 @@ Summary
 
 ## Point (1) - Localization of code's sections that use matrix's operation
 
-*Find in `lar.js` which functions needs to do a matrix operation
+* Find in `lar.js` which functions needs to do a matrix operation
 
-*Replacement with a call to an external procedure (*interface*)
+* Replacement with a call to an external procedure (*interface*)
 
 !
 
-## Point (2) - Creation of a proper layer that implements the computation of matrix's operation hiding the logic implementation
+## Point (2.1)
+
+#####Creation of a proper layer that implements the computation of matrix's operation hiding the logic implementation
 
 *Definition of a `matrixutil_accel.js` layer.
 
 *This layer is responsable to handle format or encoding, such as csr, json...
+
+!
+
+## Point (2.2)
 
 *Valuate if there's the possibility to introduce some kind of high level optimizations. Ex. A^T x B
 
@@ -43,7 +49,7 @@ Summary
 
 !
 
-Slide 3 
+## Point (3)
 ===
 * Content slide 3 *
 ** Content slide 3 **

@@ -24,7 +24,9 @@ Summary
 =======
 
 1) Localization of code's sections that use matrix's operation
+
 2) Creation of a proper layer that implements the computation of matrix's operation hiding the logic implementation
+
 3) Setup a web service that offers such operation online
 
 !

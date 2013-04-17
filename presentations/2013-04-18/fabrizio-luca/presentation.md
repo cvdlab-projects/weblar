@@ -19,19 +19,13 @@ Summary
 
 3) Setup a web service that offers such operation online
 
-!
 
-## (1) Localization of code's sections that use matrix's operation
-
-*Find in lar.js which functions needs to do a matrix operation 
-*Replacement with a call to an external procedure (interface).
-
-!
 
 ## Point (1) - Localization of code's sections that use matrix's operation
 
-*Find in lar.js which functions needs to do a matrix operation 
-*Replacement with a call to an external procedure (interface).
+*Find in `lar.js` which functions needs to do a matrix operation 
+
+*Replacement with a call to an external procedure (*interface*).
 
 !
 

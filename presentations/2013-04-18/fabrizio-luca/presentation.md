@@ -35,9 +35,9 @@ Summary
 
 ####Creation of a proper layer that implements the computation of matrix's operation hiding the logic implementation
 
-*Definition of a `matrixutil_accel.js` layer.
+* Definition of a `matrixutil_accel.js` layer.
 
-*This layer is responsable to handle format or encoding, such as csr, json...
+* This layer is responsable to handle format or encoding, such as csr, json...
 
 !
 
@@ -45,11 +45,11 @@ Summary
 
 ####Creation of a proper layer that implements the computation of matrix's operation hiding the logic implementation
 
-*Valuate if there's the possibility to introduce some kind of high level optimizations. Ex. A^T x B
+* Valuate if there's the possibility to introduce some kind of high level optimizations. Ex. A^T x B
 
-*Realization of a `HttpRequest` with the matrix computation webservice using Representational state transfer (`REST`)
+* Realization of a `HttpRequest` with the matrix computation webservice using Representational state transfer (`REST`)
 
-*This layer is also responsable to manage the answer, with an opportune decoding in order to satisfy the spefics
+* This layer is also responsable to manage the answer, with an opportune decoding in order to satisfy the spefics
 
 !
 
@@ -57,10 +57,10 @@ Summary
 
 ####Setup a web service that offers such operation online
 
-*The webserver will be available with `node.js`
+* The webserver will be available with `node.js`
 
-*Acquisition of the request using `REST`
+* Acquisition of the request using `REST`
 
-*Executing the computations (`OpenCL`) and forwarding the results
+* Executing the computations (`OpenCL`) and forwarding the results
 
-*Create a *domain name* in which will be avalilable such services online
+* Create a *domain name* in which will be avalilable such services online

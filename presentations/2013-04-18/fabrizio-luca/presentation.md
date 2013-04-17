@@ -21,7 +21,9 @@ Summary
 
 !
 
-## Point (1) - Localization of code's sections that use matrix's operation
+## Point (1)
+
+####Localization of code's sections that use matrix's operation
 
 * Find in `lar.js` which functions needs to do a matrix operation
 
@@ -31,7 +33,7 @@ Summary
 
 ## Point (2.1)
 
-#####Creation of a proper layer that implements the computation of matrix's operation hiding the logic implementation
+####Creation of a proper layer that implements the computation of matrix's operation hiding the logic implementation
 
 *Definition of a `matrixutil_accel.js` layer.
 
@@ -40,6 +42,8 @@ Summary
 !
 
 ## Point (2.2)
+
+####Creation of a proper layer that implements the computation of matrix's operation hiding the logic implementation
 
 *Valuate if there's the possibility to introduce some kind of high level optimizations. Ex. A^T x B
 
@@ -50,9 +54,13 @@ Summary
 !
 
 ## Point (3)
-===
-* Content slide 3 *
-** Content slide 3 **
 
-		ioefifofewioefh
-[google link](www.google.com)
+####Setup a web service that offers such operation online
+
+*The webserver will be available with `node.js`
+
+*Acquisition of the request using `REST`
+
+*Executing the computations (`OpenCL`) and forwarding the results
+
+*Create a *domain name* in which will be avalilable such services online

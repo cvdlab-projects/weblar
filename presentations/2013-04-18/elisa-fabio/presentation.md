@@ -1,6 +1,11 @@
-Extension of the LAR.js and LAR-DEMO.js projects with convex cells
+Weblar - Task one: 
 ===
-* Reimplementation of the "extract" function, already present in the project, generalizing it to make it work on cells with general shape. 
+Extension of the `LAR.js` and `LAR-DEMO.js` projects with convex cells
+
+!
+
+##Description
+Reimplementation of the "extract" function, already present in the project, generalizing it to make it work on cells with general shape. 
 
 !
 

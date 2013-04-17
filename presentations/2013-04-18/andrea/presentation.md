@@ -2,7 +2,11 @@ Weblar - Task one:
 ===
 Extension of the `LAR.js` and `LAR-DEMO.js` projects with `convex cells`
 
-Point one: Implementation of the cartesian product function between convex cells.
+!
+
+Point (sub-task) one: 
+
+Implementation of the cartesian product function between convex cells.
 
 * Study of the "larProduct" function, currently present in lar.py.
 * Integration of the lar.js project with this function, which will allow to do the product between convex cells and which is based on the "larProduct" function.
@@ -15,7 +19,7 @@ The problem:
 
 !
 
-The solution 
+The solution:
 ===
 * The javascript implementation of this function will calculate the cartesian product descripted above. This function will be tested with simple models. We will use basic operations like "for cicles" and sorting algorithm, to combine the input models' vertexes and cells.
 

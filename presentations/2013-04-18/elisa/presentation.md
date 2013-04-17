@@ -1,7 +1,6 @@
-Slide 1 
+Extension of the LAR.js and LAR-DEMO.js projects with convex cells - PART II
 ===
-Content slide 1
-
+Reimplementation of the "extact" function, already present in the project, generalizing it to make it work on cells with general shape. 
 !
 
 Slide 2 

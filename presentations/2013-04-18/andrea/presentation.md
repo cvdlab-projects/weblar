@@ -17,6 +17,6 @@ The problem:
 
 The solution 
 ===
-* The javascript implementation of this function will calculate the cartesian product descripted above. This function will be tested with simple models. We will use basic operations like "for cicles" and sorting algorithms.
+* The javascript implementation of this function will calculate the cartesian product descripted above. This function will be tested with simple models. We will use basic operations like "for cicles" and sorting algorithm, to combine the input models' vertexes and cells.
 
 [Task's folder](https://github.com/cvdlab-bio/weblar/tree/master/projects/Extension%20of%20the%20LAR.js%20and%20LAR-DEMO.js)

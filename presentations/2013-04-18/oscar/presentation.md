@@ -22,10 +22,10 @@ Integration of `WebMOL` and `WebPDB` projects
 
 Identify the connections between the two projects
 
-	- make changes where necessary
+* make changes where necessary
 		
-		- example: WebMOL has stored only the basic amino acids
-		 -> make possible to load other amino acids 
+	- example: WebMOL has stored only the basic amino acids
+	-> make possible to load other amino acids 
 
 ####Step (3)
 

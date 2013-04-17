@@ -13,11 +13,11 @@ Integration of the `matrix computation` web-service
 Summary
 =======
 
-1) Localization of code's sections that use matrix's operation
+(1) Localization of code's sections that use matrix's operation
 
-2) Creation of a proper layer that implements the computation of matrix's operation hiding the logic implementation
+(2) Creation of a proper layer that implements the computation of matrix's operation hiding the logic implementation
 
-3) Setup a web service that offers such operation online
+(3) Setup a web service that offers such operation online
 
 !
 
@@ -45,7 +45,7 @@ Summary
 
 ####Creation of a proper layer that implements the computation of matrix's operation hiding the logic implementation
 
-* Valuate if there's the possibility to introduce some kind of high level optimizations. Ex. A^T x B
+* Valuate if there's the possibility to introduce some kind of high level optimizations.
 
 * Realization of a `HttpRequest` with the matrix computation webservice using Representational state transfer (`REST`)
 

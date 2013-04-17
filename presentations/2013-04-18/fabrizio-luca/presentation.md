@@ -4,19 +4,9 @@ Integration of the `matrix computation` web-service
 
 !
 
-Description
-===========
+## Description
 
 *Create a webservice that provides fast matrixs' operations on the network.*
-
-!
-
-Summary
-=======
-
-* Localization of code's sections that use matrix's operation
-* Creation of a proper layer that implements the computation of matrix's operation hiding the logic implementation
-* Setup a web service that offers such operation online
 
 !
 
@@ -31,11 +21,17 @@ Summary
 
 !
 
-## Point (1)
+## (1) Localization of code's sections that use matrix's operation
 
-*Localization of code's sections that use matrix's operation*
+*Find in lar.js which functions needs to do a matrix operation 
+*Replacement with a call to an external procedure (interface).
 
+!
 
+## Point (1) - Localization of code's sections that use matrix's operation
+
+*Find in lar.js which functions needs to do a matrix operation 
+*Replacement with a call to an external procedure (interface).
 
 !
 

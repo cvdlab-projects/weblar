@@ -129,3 +129,28 @@
 	}());
 
 */
+
+// matrix_util.send({ "ROW" : 3, "COL" : 3, "DATA" : [1,1,1,1,1], "ROWCOUNT" : [0,1,3,5], "COLCOUNT" : [2,0,2,0,1] })
+
+!(function (exports){
+
+	var matrix_util = exports.matrix_util = {};
+
+	var url = matrix_util.url = "http://cvd01.dia.uniroma3.it:3000/multiply";
+
+	this.send = matrix_util.send = function(model) {  
+	$.ajax({  
+		type: 'POST',  
+		url: this.url,  
+		data: JSON.stringify(model), // '{"name":"' + model.name + '"}',  
+		dataType: 'text',  
+		processData: false,  
+		contentType: 'application/json',  
+		success: function(data){ console.log("wiiiiiiiiiiiii"); console.log(data); },  
+		error: function(req, status, ex) {},  
+		timeout:60000  
+	});
+
+  }; 
+
+}(this));

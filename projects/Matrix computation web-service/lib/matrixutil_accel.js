@@ -87,50 +87,117 @@
 	
 	*/
 
-	/*
-		Synchronous method that implements a POST request to the rest webserver.
-		It stores the result in the "sync_result" variable
+	/**
+	
 	*/
+	var isValidJson = function(){
+		// TODO
+		return true;
+	}
 
-	var sync_result = exports.sync_result = {};
 
-	matrix_util.sendRequestSync = function(matrixA,matrixB){
+	/**
+		
+	*/
+	var areMatrixValid = function(matrixA,matrixB){
+		//TODO
+		if ( !isValidJson(matrixA) || !isValidJson(matrixB) )
+			return false;
 
-		var callback = function(data) { 
-			sync_result = data;
+		return true;
+	}
+
+
+	/**
+
+	*/
+	var sendRequest = function(matrixA,matrixB,callback,asynchronous){ 
+
+		$.ajax({
+			type: 'POST' ,
+			url: matrix_util.url ,
+			data :  "matrixa=" + JSON.stringify(matrixA) + "&matrixb=" + JSON.stringify(matrixB) ,
+			async : asynchronous ,
+			processData : false ,
+			success : callback , 
+			error : function(req, status, ex) {} ,
+			timeout:60000
+		});
+
+	}
+
+
+	/**
+
+	*/
+	var sync_result = matrix_util.sync_result = {};
+	
+	/**
+		Synchronous method that implements a POST request to the rest webserver.
+		It stores the result in the "sync_result" variable.
+	*/
+	var sendRequestSync = function(matrixA,matrixB){
+
+		if ( !areMatrixValid(matrixA,matrixB) )
+			throw new Error(); //TODO
+
+		var callback = function(data) {
+			matrix_util.sync_result = data;
 		};
 
-		$.ajax({
-			type: 'POST' ,
-			url: matrix_util.url ,
-			data :  "matrixa=" + JSON.stringify(matrixA) + "&matrixb=" + JSON.stringify(matrixB) ,
-			async : false ,
-			processData : false ,
-			success : callback , 
-			error : function(req, status, ex) {} ,
-			timeout:60000
-		});
+		sendRequest(matrixA,matrixB,callback,false);
 
 	};
 
-
-	/*
+	/**
 		Asynchronous method that implements a POST request to the rest webserver.
-		It stores the result in the "sync_result" variable
+		On success will be executed the "callback" function
 	*/
+	var sendRequestAsync = function(matrixA,matrixB,callback){
 
-	matrix_util.sendRequestAsync = function(matrixA,matrixB,callback){
+		if ( !areMatrixValid(matrixA,matrixB) )
+			throw new Error(); //TODO
 
-		$.ajax({
-			type: 'POST' ,
-			url: matrix_util.url ,
-			data :  "matrixa=" + JSON.stringify(matrixA) + "&matrixb=" + JSON.stringify(matrixB) ,
-			processData : false ,
-			success : callback , 
-			error : function(req, status, ex) {} ,
-			timeout:60000
-		});
+		sendRequest(matrixA,matrixB,callback,true);
 
 	};
+
+	/**
+
+	*/
+	matrix_util.prodMatrixSync = function (matrixA,matrixB) {
+		
+		sendRequestSync(matrixA,matrixB);
+
+	}
+
+	/**
+
+	*/
+	matrix_util.prodMatrixSync_log = function (matrixA,matrixB) {
+		
+		sendRequestSync(matrixA,matrixB);
+
+		console.log(this.sync_result);
+
+	}
+
+	/**
+
+	*/
+	matrix_util.prodMatrixAsync = function (matrixA,matrixB,callback) {
+		
+		sendRequestAsync(matrixA,matrixB,callback);
+
+	}
+
+	/**
+
+	*/
+	matrix_util.prodMatrixAsync_log = function (matrixA,matrixB) {
+
+		sendRequestAsync(matrixA,matrixB, function(data) { console.log(data); });
+		
+	}
 
 }(this));

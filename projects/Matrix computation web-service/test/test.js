@@ -45,9 +45,4 @@ log("test: matrix_util");
 var Ajson = { "ROWCOUNT" : 3, "COLCOUNT" : 3, "ROW" : [0,1,3,5], "COL" : [2,0,2,0,1], "DATA" : [1,1,1,1,1] };
 var Bjson = { "ROWCOUNT" : 3, "COLCOUNT" : 3, "ROW" : [0,1,3,5], "COL" : [2,0,2,0,1], "DATA" : [1,1,1,1,1] };
 
-
-var callback_function_log = function(data) {
-	log(data);
-}
-
-matrix_util.sendRequestAsync(Ajson,Ajson,callback_function_log);
+matrix_util.prodMatrixAsync_log(Ajson,Bjson);

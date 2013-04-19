@@ -1,164 +1,136 @@
-		/*
-		The MIT License
-		===============
-		    
-		Permission is hereby granted, free of charge, to any person obtaining
-		a copy of this software and associated documentation files (the
-		'Software'), to deal in the Software without restriction, including
-		without limitation the rights to use, copy, modify, merge, publish,
-		distribute, sublicense, and/or sell copies of the Software, and to
-		permit persons to whom the Software is furnished to do so, subject to
-		the following conditions:
+/**
 
-		The above copyright notice and this permission notice shall be
-		included in all copies or substantial portions of the Software.
+	matrixutil_accel.js
 
-		THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-		EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-		MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-		IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-		CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-		TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-		SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-		*/ 
-		
+	Accelerated matrix utility
 
-		!(function (exports){
+	The MIT License
+	===============
+	    
+	Permission is hereby granted, free of charge, to any person obtaining
+	a copy of this software and associated documentation files (the
+	'Software'), to deal in the Software without restriction, including
+	without limitation the rights to use, copy, modify, merge, publish,
+	distribute, sublicense, and/or sell copies of the Software, and to
+	permit persons to whom the Software is furnished to do so, subject to
+	the following conditions:
 
-		var matrix_util = exports.matrix_util = {};
+	The above copyright notice and this permission notice shall be
+	included in all copies or substantial portions of the Software.
 
-		//matrix_util.url = "http://webpdb.dia.uniroma3.it/multiply";
-		matrix_util.url = "http://cvd01.dia.uniroma3.it:3000/service/test/multiply";
+	THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+	CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+*/
 
-		/*
+!(function (exports){
+	
+	var matrix_util = exports.matrix_util = {};
 
-		var csrToJSON = function(CSRm){
+	matrix_util.url = "http://cvd01.dia.uniroma3.it:3000/service/test/multiply";
 
-		    if (not isspmatrix_csr(CSRm)):
-		        trow Exception('Matrix is not in CSR format')
+	/*
 
-		    var ROWCOUNT = CSRm.shape[0];
-		    var COLCOUNT = CSRm.shape[1];
-		    var ROW = CSRm.indptr.tolist();
-		    var COL = CSRm.indices.tolist();
-		    var DATA = CSRm.data.tolist();
-		    var JSONm = json.dumps({"ROWCOUNT":ROWCOUNT, "COLCOUNT":COLCOUNT, "ROW":ROW, "COL":COL, "DATA":DATA })
+	var csrToJSON = function(CSRm){
 
-		    logging.debug('CSRm.todense(): ' + str(CSRm.todense()));
-		    logging.info('ROWCOUNT: ' + str(ROWCOUNT));
-		    logging.info('COLCOUNT: ' + str(COLCOUNT));
-		    logging.info('ROW: ' + str(ROW));
-		    logging.info('COL: ' + str(COL));
-		    logging.info('DATA: ' + str(DATA));
+	    if (not isspmatrix_csr(CSRm)):
+	        trow Exception('Matrix is not in CSR format')
 
-		    return JSONm
+	    var ROWCOUNT = CSRm.shape[0];
+	    var COLCOUNT = CSRm.shape[1];
+	    var ROW = CSRm.indptr.tolist();
+	    var COL = CSRm.indices.tolist();
+	    var DATA = CSRm.data.tolist();
+	    var JSONm = json.dumps({"ROWCOUNT":ROWCOUNT, "COLCOUNT":COLCOUNT, "ROW":ROW, "COL":COL, "DATA":DATA })
+
+	    logging.debug('CSRm.todense(): ' + str(CSRm.todense()));
+	    logging.info('ROWCOUNT: ' + str(ROWCOUNT));
+	    logging.info('COLCOUNT: ' + str(COLCOUNT));
+	    logging.info('ROW: ' + str(ROW));
+	    logging.info('COL: ' + str(COL));
+	    logging.info('DATA: ' + str(DATA));
+
+	    return JSONm
+	};
+
+	var jsonToCSR = function(JSONm){
+
+	    var ROWCOUNT = JSONm['ROWCOUNT'];
+	    var COLCOUNT = JSONm['COLCOUNT'];
+	    var ROW = JSONm['ROW'];
+	    var COL = JSONm['COL'];
+	    var DATA = JSONm['DATA'];
+	    var CSRm = csr_matrix((array(DATA),array(COL),array(ROW)),shape=(ROWCOUNT,COLCOUNT));
+
+	    if (!isspmatrix_csr(CSRm))
+	        trow Exception('Matrix is not in CSR format');
+
+	    logging.debug('CSRm.todense(): ' + str(CSRm.todense()));
+	    logging.info('ROWCOUNT: ' + str(ROWCOUNT));
+	    logging.info('COLCOUNT: ' + str(COLCOUNT));
+	    logging.info('ROW: ' + str(ROW));
+	    logging.info('COL: ' + str(COL));
+	    logging.info('DATA: ' + str(DATA));
+	    
+	    return CSRm;
+	}
+
+	matrix_util.csrTranspose = function(CSRm){
+	    CSRm = CSRm.T;
+	    return CSRm;
+	}
+	
+	*/
+
+	/*
+		Synchronous method that implements a POST request to the rest webserver.
+		It stores the result in the "sync_result" variable
+	*/
+
+	var sync_result = exports.sync_result = {};
+
+	matrix_util.sendRequestSync = function(matrixA,matrixB){
+
+		var callback = function(data) { 
+			sync_result = data;
 		};
 
-		var jsonToCSR = function(JSONm){
+		$.ajax({
+			type: 'POST' ,
+			url: matrix_util.url ,
+			data :  "matrixa=" + JSON.stringify(matrixA) + "&matrixb=" + JSON.stringify(matrixB) ,
+			async : false ,
+			processData : false ,
+			success : callback , 
+			error : function(req, status, ex) {} ,
+			timeout:60000
+		});
 
-		    var ROWCOUNT = JSONm['ROWCOUNT'];
-		    var COLCOUNT = JSONm['COLCOUNT'];
-		    var ROW = JSONm['ROW'];
-		    var COL = JSONm['COL'];
-		    var DATA = JSONm['DATA'];
-		    var CSRm = csr_matrix((array(DATA),array(COL),array(ROW)),shape=(ROWCOUNT,COLCOUNT));
+	};
 
-		    if (!isspmatrix_csr(CSRm))
-		        trow Exception('Matrix is not in CSR format');
 
-		    logging.debug('CSRm.todense(): ' + str(CSRm.todense()));
-		    logging.info('ROWCOUNT: ' + str(ROWCOUNT));
-		    logging.info('COLCOUNT: ' + str(COLCOUNT));
-		    logging.info('ROW: ' + str(ROW));
-		    logging.info('COL: ' + str(COL));
-		    logging.info('DATA: ' + str(DATA));
-		    
-		    return CSRm;
-		}
+	/*
+		Asynchronous method that implements a POST request to the rest webserver.
+		It stores the result in the "sync_result" variable
+	*/
 
-		matrix_util.csrTranspose = function(CSRm){
-		    CSRm = CSRm.T;
-		    return CSRm;
-		}
-		
-		*/
+	matrix_util.sendRequestAsync = function(matrixA,matrixB,callback){
 
-		/*
-		 * Metodo che permette di effettuare una richiesta
-		 */
-		matrix_util.sendRequest = function(matrixA,matrixB){
+		$.ajax({
+			type: 'POST' ,
+			url: matrix_util.url ,
+			data :  "matrixa=" + JSON.stringify(matrixA) + "&matrixb=" + JSON.stringify(matrixB) ,
+			processData : false ,
+			success : callback , 
+			error : function(req, status, ex) {} ,
+			timeout:60000
+		});
 
-			var callback = function(data) { 
-				console.log(data); 
-    			//loadAddModel(data);  
-    			//$("#modelName").val(data.name);  
-  			};
+	};
 
-		   $.ajax({  
-		      type: 'POST',  
-		      url: matrix_util.url,		      
-		      data: {"matrixa": JSON.stringify(matrixA), "matrixb": JSON.stringify(matrixB)}
-		      //data: dataJson, // '{"name":"' + model.name + '"}',  
-		      //dataType: 'text',  
-		      processData: false,  
-		      contentType: 'application/json',  
-		      success: callback,  
-		      error: function(req, status, ex) {},  
-		      timeout:60000  
-		    });  
-		 }; 
-		 
-
-		/*    
-		matrix_util.matrixProduct = function(A,B){
-
-		// Input parameters check
-
-		    if (!isspmatrix(A))
-		        trow Exception('A is not a scipy matrix')
-		    if (!isspmatrix(B)):
-		        trow Exception('B is not a scipy matrix')
-		    if (!(A.shape[1] == B.shape[0])):
-		        trow Exception('Column of matrix A are not equal to raws of matrix B')
-
-		// Convert to JSON
-
-		    logging.info('Matrix A');
-		    var Ajson = csrToJSON(A.tocsr());
-		    
-		    logging.info('Matrix B');
-		    var Bjson = csrToJSON(B.tocsr()); 
-
-		// Send A and B, Receive A*B
-
-		    var payload = {"matrixa": Ajson, "matrixb": Bjson};   
-
-		    var req = requests.post(url, data=payload);
-		    logging.info('Matrix A and matrix B sent');
-		    logging.info('Status code: ' + str(req.status_code));
-		    logging.info('Url: ' + str(req.url));
-		    logging.info('Headers: ' + req.headers['Content-Type']);
-		    //logging.debug('Content: ' + str(req.content));
-
-		    ABjson = json.loads(req.content);
-		    logging.info('Matrix A*B received');
-
-		// Convert to CSR
-
-		    logging.info('Matrix AB');
-		    var AB = jsonToCSR(ABjson);
-
-		// Output parameters check
-
-		    if (!isspmatrix(AB))
-		        trow Exception('A*B is not a scipy matrix');
-		    if (!((AB.shape[0] == A.shape[0]) and (AB.shape[1] == B.shape[1])))
-		        trow Exception('Output matrix A*B dimensions are not compatible with input matrices A,B dimensions');
-
-		    return AB;
-		}
-
-		*/
-
- 	}(this));
+}(this));

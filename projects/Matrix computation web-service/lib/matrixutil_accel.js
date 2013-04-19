@@ -20,16 +20,20 @@
 		CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 		TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 		SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-		    
+		*/ 
 		
 
 		!(function (exports){
 
 		var matrix_util = exports.matrix_util = {};
 
-		matrix_util.url = "http://webpdb.dia.uniroma3.it/multiply";
+		//matrix_util.url = "http://webpdb.dia.uniroma3.it/multiply";
+		matrix_util.url = "http://cvd01.dia.uniroma3.it:3000/service/test/multiply";
 
-		matrix_util.csrToJSON = function(CSRm){
+
+		/*
+
+		var csrToJSON = function(CSRm){
 
 		    if (not isspmatrix_csr(CSRm)):
 		        trow Exception('Matrix is not in CSR format')
@@ -51,7 +55,7 @@
 		    return JSONm
 		};
 
-		matrix_util.jsonToCSR = function(JSONm){
+		var jsonToCSR = function(JSONm){
 
 		    var ROWCOUNT = JSONm['ROWCOUNT'];
 		    var COLCOUNT = JSONm['COLCOUNT'];
@@ -77,7 +81,36 @@
 		    CSRm = CSRm.T;
 		    return CSRm;
 		}
-		    
+		
+		*/
+
+		/*
+		 * Metodo che permette di effettuare una richiesta
+		 */
+		matrix_util.sendRequest = function(matrixA,matrixB){
+
+			var callback = function(data) { 
+				console.log(data); 
+    			//loadAddModel(data);  
+    			//$("#modelName").val(data.name);  
+  			};
+
+		   $.ajax({  
+		      type: 'POST',  
+		      url: matrix_util.url,		      
+		      data: {"matrixa": JSON.stringify(matrixA), "matrixb": JSON.stringify(matrixB)}
+		      //data: dataJson, // '{"name":"' + model.name + '"}',  
+		      //dataType: 'text',  
+		      processData: false,  
+		      contentType: 'application/json',  
+		      success: callback,  
+		      error: function(req, status, ex) {},  
+		      timeout:60000  
+		    });  
+		 }; 
+		 
+
+		/*    
 		matrix_util.matrixProduct = function(A,B){
 
 		// Input parameters check
@@ -126,31 +159,6 @@
 		    return AB;
 		}
 
-	}());
+		*/
 
-*/
-
-// matrix_util.send({ "ROW" : 3, "COL" : 3, "DATA" : [1,1,1,1,1], "ROWCOUNT" : [0,1,3,5], "COLCOUNT" : [2,0,2,0,1] })
-
-!(function (exports){
-
-	var matrix_util = exports.matrix_util = {};
-
-	var url = matrix_util.url = "http://cvd01.dia.uniroma3.it:3000/multiply";
-
-	this.send = matrix_util.send = function(model) {  
-	$.ajax({  
-		type: 'POST',  
-		url: this.url,  
-		data: JSON.stringify(model), // '{"name":"' + model.name + '"}',  
-		dataType: 'text',  
-		processData: false,  
-		contentType: 'application/json',  
-		success: function(data){ console.log("wiiiiiiiiiiiii"); console.log(data); },  
-		error: function(req, status, ex) {},  
-		timeout:60000  
-	});
-
-  }; 
-
-}(this));
+ 	}(this));

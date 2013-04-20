@@ -1,6 +1,6 @@
 /**
 
-	matrixutil_accel.js
+	"matrixutil_accel.js"
 
 	Accelerated matrix utility
 

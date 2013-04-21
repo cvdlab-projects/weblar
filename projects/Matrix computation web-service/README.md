@@ -10,3 +10,4 @@ http://cvd01.dia.uniroma3.it:3000/service/test/networktest
 * Rinominare cartella per non avere spazi
 * Creare guida installazione
 * Pulire librerie inutilizzate
+* Sistemare slide su gh-pages

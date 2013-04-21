@@ -45,7 +45,7 @@ if ( !Array.prototype.unique ) {
 	csrStuff.js
 */
 
-	!(function (exports){
+!(function (exports){
 
 	// *
 	var isInteger = function(value) {
@@ -79,7 +79,7 @@ if ( !Array.prototype.unique ) {
 		// Useful for various calc and shape
 		this.numrow = 0;
 		this.lastcolumn = 0;
-		this.nnz = 0;
+		this.nnz = 0; // number non zero?
 		// To alter shape at runtime
 		this.emptycolumns = 0;
 		// BaseIndexing
@@ -190,6 +190,10 @@ if ( !Array.prototype.unique ) {
 
 		this.emptycolumns -= 1;
 	};
+
+	/*
+		
+	*/
 
 	csr_matrix.prototype.loadData = function(objargs) {
 		// possibili casi
@@ -527,6 +531,11 @@ if ( !Array.prototype.unique ) {
 
 		return outString;
 	};
+
+
+	/*
+		
+	*/
 
 	csr_matrix.prototype.toJSON = function() {
 		return {"ROW" : this.getRowPointer(),

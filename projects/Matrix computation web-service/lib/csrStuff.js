@@ -152,7 +152,7 @@ if ( !Array.prototype.unique ) {
 
 		return new csr_matrix({
 			"fromdense" : [].concat.apply([],denseMatrix),
-			"numcols" : denseMatrix.length
+			"numcols" : denseMatrix[0].length
 		});
 
 	}

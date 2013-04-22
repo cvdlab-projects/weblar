@@ -88,6 +88,43 @@ if ( !Array.prototype.unique ) {
 		this.loadData(objargs);
 	}
 
+
+	/*
+		@Author: Luca Menichetti
+		Create an istance of csr_matrix using a json format.
+	*/
+	function csr_matrix_from_json(objargs){
+
+		// if there are just only one of this arguments...
+		if (objargs.hasOwnProperty("ROW") || objargs.hasOwnProperty("COL") || objargs.hasOwnProperty("DATA") ||
+			objargs.hasOwnProperty("ROWCOUNT") || objargs.hasOwnProperty("COLCOUNT")){
+
+			// ...means that 'objargs' is a json and has to have all this arguments
+ 			if ( !objargs.hasOwnProperty("ROW") || !objargs.hasOwnProperty("COL") || !objargs.hasOwnProperty("DATA") ||
+				 !objargs.hasOwnProperty("ROWCOUNT") || !objargs.hasOwnProperty("COLCOUNT")){
+				throw new Error("Some arguments are not valid. " +
+					"For example the syntax is : { \"ROW\" : [0,2,3,4], \"COL\" : [0,2,1,0], " +
+					"\"DATA\" : [1,1,1,1], \"ROWCOUNT\" : 3, \"COLCOUNT\" : 3 }.");
+ 			}
+
+			objargs = { 
+				"rowptr" : objargs.ROW,
+				"colindices" : objargs.COL,
+				"data" : objargs.DATA,
+				"numcols" : objargs.COLCOUNT,
+				"numrows" : objargs.ROWCOUNT
+			};
+
+			return new csr_matrix(objargs);
+
+		} else {
+			throw new Error("Isn't a valid csr json representation. " +
+				"For example the syntax is : { \"ROW\" : [0,2,3,4], \"COL\" : [0,2,1,0], " +
+				"\"DATA\" : [1,1,1,1], \"ROWCOUNT\" : 3, \"COLCOUNT\" : 3 }.");
+		}
+
+	}
+
 	csr_matrix.prototype.getRowPointer = function(useTypedArrays) {
 		useTypedArrays = useTypedArrays || false;
 
@@ -281,7 +318,12 @@ if ( !Array.prototype.unique ) {
 
 			// Recreate data
 			this.loadData({"numcols": objargs.numcols, "rowptr": tmp_rowptr, "colindices": tmp_col, "data": tmp_data});
+		} else {
+			// @Author: Luca Menichetti
+			// if objargs contains only wrongs arguments throws an error
+			throw new Error("Wrong params declaration.");
 		}
+
 	};
 
 	csr_matrix.prototype.transpose = function() {
@@ -546,5 +588,6 @@ if ( !Array.prototype.unique ) {
 	};
 
 	exports.csr_matrix = csr_matrix;
+	exports.csr_matrix_from_json = csr_matrix_from_json;
 
 }(this));

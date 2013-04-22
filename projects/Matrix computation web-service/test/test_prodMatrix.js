@@ -3,7 +3,7 @@
 	This is a brief example of how to use the prodMatrix function
 	available on the lib matrixUtil_accel.js
 
-	Git-Hub link : https://github.com/cvdlab-bio/weblar/tree/master/projects/Matrix%20computation%20web-service
+	Github link : https://github.com/cvdlab-bio/weblar/tree/master/projects/Matrix%20computation%20web-service
 
 	NOTE: the service must be available at the url "http://webpdb.dia.uniroma3.it/service/test/multiply"
 

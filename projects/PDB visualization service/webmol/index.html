@@ -1,0 +1,155 @@
+<html>
+
+<head>
+<title>WEB Mol</title>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="resources/style.css"/>
+<script id="shader-fs" type="x-shader/x-fragment">
+
+#ifdef GL_ES
+precision highp float;
+#endif
+
+uniform vec4 color;
+uniform bool enableLights;
+uniform vec3 ambientColor;
+uniform bool enablePicking;
+uniform vec3 directionalColor;
+uniform vec3 lightingDirection;
+
+varying vec4 transformedNormal;
+
+void main(){
+     if(!enableLights){
+	     gl_FragColor = vec4(color.rgb, color.a);
+     }
+    else{
+       float directionalLightWeighting = max(dot(transformedNormal.xyz, lightingDirection), 0.0);
+       vec3 light = directionalColor*directionalLightWeighting + ambientColor;
+       gl_FragColor = vec4(color.rgb * light, color.a);
+    }
+
+	  if(enablePicking) {
+	    gl_FragColor = vec4(gl_FragColor.x+0.2, gl_FragColor.y+0.2, gl_FragColor.z+0.3, 0.8);
+	  }
+}
+</script>
+
+<script id="shader-vs" type="x-shader/x-vertex">
+
+attribute vec3 position;
+attribute vec3 normal;
+
+uniform mat4 worldMatrix;
+//uniform mat4 matrixRotation;
+uniform mat4 projectionMatrix;
+uniform mat4 worldInverseTransposeMatrix;
+
+uniform vec3 translateVertex;
+uniform vec3 scaleVertex;
+
+varying vec4 transformedNormal;
+
+void main(void) {
+  transformedNormal = worldInverseTransposeMatrix * vec4(normal, 1.0);
+
+  vec4 transformedPosition = vec4(position * scaleVertex + translateVertex, 1.0);
+  //transformedPosition = matrixRotation * transformedPosition;
+  gl_Position = projectionMatrix * worldMatrix * transformedPosition;
+}
+</script>
+
+<script type="text/javascript" src="js/PhiloGL.js"></script>
+<script type="text/javascript" src="js/animation.js"></script>
+<script type="text/javascript" src="js/camera.js"></script>
+<script type="text/javascript" src="js/frustumCulling.js"></script>
+<script type="text/javascript" src="js/atom.js"></script>
+<script type="text/javascript" src="js/protein.js"></script>
+<script type="text/javascript" src="js/proteinReader.js"></script>
+<script type="text/javascript" src="js/jsonAminoAcids.js"></script>
+<script type="text/javascript" src="js/renderizer.js"></script>
+<script type="text/javascript" src="js/eventHandler.js"></script>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/colorpicker/colorPicker.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#spinner").bind("ajaxSend", function() {
+    $(this).show();
+  }).bind("ajaxStop", function() {
+    $(this).hide();
+  }).bind("ajaxError", function() {
+    $(this).hide();
+  });
+
+     });
+</script>
+
+<script type="text/javascript">
+window.onresize = resizeWindow;
+</script>
+
+
+<body onload="webGLStart();" bgcolor="black">
+
+<div id="selectOption">
+  <p class="centeredImage">
+  <img src="resources/logoscritta.png" alt="WebMol logo" height="65%"/>
+</p>
+
+<input type="text" id="idProtein" />
+<button type="button" onclick="downloadProtein()">Get Protein</button>
+
+
+Visualization:
+<select id="renderizerType" onChange="renderizerTypeChanged()">
+  <option value="ballandstick">Ball and Stick</option>
+  <option value="vanderwaals">Van der Waals</option>
+  <option value="stick">Stick</option>
+  <option value="lines">Lines</option>
+  <option value="backBone">BackBone</option>
+</select>
+
+Amino Acids:
+<select id="proteinSelected" onChange="proteinChanged()">
+  <option value="Alanine">Alanine</option>
+  <option value="Arginine">Arginine</option>
+  <option value="Cysteine">Cysteine</option>
+</select>
+
+Models:
+<select id="modelSelected" onChange="modelChanged()">
+
+</select>
+
+<input type="checkbox" id="viewBackBone"name="backbone" value="BackBone" onChange="backboneChanged()"/> View backbone<br />
+<!--
+<div id="info">
+      Objects: <span id="objects"></span> | FPS: <span id="fps"></span>
+</div>
+-->
+
+<input type="text" id="colorId" value="#000000" onclick="colorPicker(event)" style="margin-top:5px;"/>
+<input type="button" value="Change color" onclick="changeBackColor();">
+
+
+</div>
+<div id="divCanvas" style="float:left;">
+
+<canvas id="webMolCanvas"></canvas>
+
+</div>
+<div id="infoAtom" style="visibility: hidden;" draggable="true">
+</div>
+
+<div id="spinner" class="spinner" style="display:none;">
+  <img id="img-spinner" src="resources/loading.gif" alt="Loading"/>
+</div>
+
+</body>
+<footer>
+
+</footer>
+</html>

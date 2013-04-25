@@ -20,14 +20,14 @@ inserendo gli opportuni databases, username e password.
 Popolare il database con le proteine in formato .pdb. Per far ciò, andare nella cartella importer di webpdb. 
 Aprire il file testModules.js e decommentare la riga 
 
-  * importer.runImpoprt(�directory_contenente_proteine_pdb�, false, �proteins�, frUtils.filterExtension(PDB_EXTENSION));                                                                                                         
+  * importer.runImpoprt("directory_contenente_proteine_pdb", false, "proteins", frUtils.filterExtension(PDB_EXTENSION));                                                                                                         
 
 e modificare il nome della directory che contiene i file delle proteine in formato .pdb. 
 Applicare lo stesso procedimento quando si vogliono caricare i monomeri ma decommentando la riga 
 
-  * importer.runImpoprt(�directory_contenente_proteine_pdb�, false, �monomers�, frUtils.filterExtension(PDB_EXTENSION));
+  * importer.runImpoprt("directory_contenente_proteine_pdb", false, "monomers", frUtils.filterExtension(PDB_EXTENSION));
 
-Avviare il servizio REST avviando server_express. Per far ci� digitare da riga di comando: node server_express. 
+Avviare il servizio REST avviando server_express. Per far ciò digitare da riga di comando: node server_express. 
 A questo punto WebPDB è pronto a ricevere richieste.
 
 Avviare WebMOL e digitare l'identificatore della proteina nell'apposito campo per visualizzare tale proteina.

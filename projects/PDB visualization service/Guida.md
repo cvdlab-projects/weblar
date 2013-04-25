@@ -33,13 +33,11 @@ A questo punto WebPDB � pronto a ricevere richieste.
 Avviare WebMOL e digitare l�identificatore della proteina nell�apposito campo per visualizzare tale proteina.
 
 
-#NOTA: 
-Per la comunicazione vengono utilizzate richieste AJAX. In particolare, WebMOL effettua richieste HTTP tramite 
+**NOTA:** Per la comunicazione vengono utilizzate richieste AJAX. In particolare, WebMOL effettua richieste HTTP tramite 
 XMLHttpRequest che sono soggette alla same-origin-policy. Ci� comporta che un�applicazione che usa XMLHttpRequest 
 pu� effettuare richieste HTTP verso il dominio dal quale � stato caricato ma non verso altri domini. 
 
-#NOTA: 
-In WebMOL, nel file index.js presente nella cartella js, il metodo downloadProtein() contiene l�URL che indica 
+**NOTA:** In WebMOL, nel file index.js presente nella cartella js, il metodo downloadProtein() contiene l�URL che indica 
 a chi inviare la richiesta per il download della proteina. Per la prova in locale � stato utilizzato come 
 indirizzo http://localhost:3000/ dove 3000 � la port dove � in attesa il server_express di WebPDB. 
 Quando si vuole rendere il servizio on-line � dunque necessario modificare tale URL con il dominio di interesse. 

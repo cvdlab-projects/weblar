@@ -6,7 +6,7 @@ Integration of the `matrix computation` web-service
 
 ## Description
 
-*Create a webservice that provides fast matrixs' operations on the network.*
+*Create a webservice that provides fast matrix operations on the network.*
 
 !
 

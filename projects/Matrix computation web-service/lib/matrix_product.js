@@ -1,6 +1,6 @@
 /**
 
-	"matrixutil_accel.js"
+	"matrix_remote_product.js"
 
 	Accelerated matrix utility
 
@@ -30,9 +30,9 @@
 
 !(function (exports){
 	
-	var matrix_util = exports.matrix_util = {};
+	var mrp = exports.matrix_remote_product = {};
 
-	matrix_util.url = "http://cvd01.dia.uniroma3.it:3000/service/test/multiply";
+	mrp.url = "http://cvd01.dia.uniroma3.it:3000/service/test/multiply";
 
 	/*
 
@@ -88,20 +88,22 @@
 	*/
 
 	/**
-	
+		Verifica se è rispettato il pattern { "ROWCOUNT" : 3, "COLCOUNT" : 3, "ROW" : [0,1,3,5], "COL" : [2,0,2,0,1], "DATA" : [1,1,1,1,1] };
+		effettuando controlli sulle chiavi
 	*/
-	var isValidJson = function(){
+	var isValidJsonMatrix = function(){
 		// TODO
 		return true;
 	}
 
 
 	/**
-		
+		Verifica se è rispettato il pattern { "ROWCOUNT" : 3, "COLCOUNT" : 3, "ROW" : [0,1,3,5], "COL" : [2,0,2,0,1], "DATA" : [1,1,1,1,1] };
+		effettuando controlli sul contenuto delle chiavi
 	*/
 	var areMatrixValid = function(matrixA,matrixB){
 		//TODO
-		if ( !isValidJson(matrixA) || !isValidJson(matrixB) )
+		if ( !isValidJsonMatrix(matrixA) || !isValidJsonMatrix(matrixB) )
 			return false;
 
 		return true;
@@ -115,7 +117,7 @@
 
 		$.ajax({
 			type: 'POST' ,
-			url: matrix_util.url ,
+			url: mrp.url ,
 			data :  "matrixa=" + JSON.stringify(matrixA) + "&matrixb=" + JSON.stringify(matrixB) ,
 			async : asynchronous ,
 			processData : false ,
@@ -130,7 +132,7 @@
 	/**
 
 	*/
-	var sync_result = matrix_util.sync_result = {};
+	var sync_result = mrp.sync_result = {};
 	
 	/**
 		Synchronous method that implements a POST request to the rest webserver.
@@ -142,7 +144,7 @@
 			throw new Error(); //TODO
 
 		var callback = function(data) {
-			matrix_util.sync_result = data;
+			mrp.sync_result = data;
 		};
 
 		sendRequest(matrixA,matrixB,callback,false);
@@ -165,7 +167,7 @@
 	/**
 
 	*/
-	matrix_util.prodMatrixSync = function (matrixA,matrixB) {
+	mrp.prodMatrixSync = function (matrixA,matrixB) {
 		
 		sendRequestSync(matrixA,matrixB);
 
@@ -174,7 +176,7 @@
 	/**
 
 	*/
-	matrix_util.prodMatrixSync_log = function (matrixA,matrixB) {
+	mrp.prodMatrixSync_log = function (matrixA,matrixB) {
 		
 		sendRequestSync(matrixA,matrixB);
 
@@ -185,7 +187,7 @@
 	/**
 
 	*/
-	matrix_util.prodMatrixAsync = function (matrixA,matrixB,callback) {
+	mrp.prodMatrixAsync = function (matrixA,matrixB,callback) {
 		
 		sendRequestAsync(matrixA,matrixB,callback);
 
@@ -194,7 +196,7 @@
 	/**
 
 	*/
-	matrix_util.prodMatrixAsync_log = function (matrixA,matrixB) {
+	mrp.prodMatrixAsync_log = function (matrixA,matrixB) {
 
 		sendRequestAsync(matrixA,matrixB, function(data) { console.log(data); });
 		

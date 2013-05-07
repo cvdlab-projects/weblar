@@ -15,9 +15,9 @@ log("====================================");
 
 log("Test: example of a matrix product.");
 
-matrix_util.url = "http://webpdb.dia.uniroma3.it/service/test/multiply";
+matrix_remote_product.url = "http://webpdb.dia.uniroma3.it/service/test/multiply";
 
-log("Service must be available at the url: " + matrix_util.url);
+log("Service must be available at the url: " + matrix_remote_product.url);
 
 
 // testing function : prodMatrixAsync_log()
@@ -27,7 +27,7 @@ log("Testing prodMatrixAsync_log(), an ascynchronous request will be sent and th
 var Ajson = { "ROWCOUNT" : 3, "COLCOUNT" : 3, "ROW" : [0,1,3,5], "COL" : [2,0,2,0,1], "DATA" : [1,1,1,1,1] };
 var Bjson = { "ROWCOUNT" : 3, "COLCOUNT" : 3, "ROW" : [0,1,3,5], "COL" : [2,0,2,0,1], "DATA" : [1,1,1,1,1] };
 
-matrix_util.prodMatrixAsync_log(Ajson,Bjson);
+matrix_remote_product.prodMatrixAsync_log(Ajson,Bjson);
 
 // Of couse you can try other functions, for example the sync function or the function without logs.
 // The result will be the same, a product will be executed, the differences will be on request's type.
@@ -43,7 +43,7 @@ matrix_util.prodMatrixAsync_log(Ajson,Bjson);
 	var Ajson = { "ROWCOUNT" : 3, "COLCOUNT" : 3, "ROW" : [0,1,3,5], "COL" : [2,0,2,0,1], "DATA" : [1,1,1,1,1] };
 	var Bjson = { "ROWCOUNT" : 3, "COLCOUNT" : 3, "ROW" : [0,1,3,5], "COL" : [2,0,2,0,1], "DATA" : [1,1,1,1,1] };
 
-	matrix_util.prodMatrixSync_log(Ajson,Bjson);
+	matrix_remote_product.prodMatrixSync_log(Ajson,Bjson);
 
 */
 
@@ -63,7 +63,7 @@ matrix_util.prodMatrixAsync_log(Ajson,Bjson);
 		console.log(data);
 	}
 
-	matrix_util.prodMatrixAsync(Ajson,Bjson,callbackFunction);
+	matrix_remote_product.prodMatrixAsync(Ajson,Bjson,callbackFunction);
 
 */
 
@@ -82,10 +82,10 @@ matrix_util.prodMatrixAsync_log(Ajson,Bjson);
 		console.log(data);
 	}
 
-	matrix_util.prodMatrixSync(Ajson,Bjson);
+	matrix_remote_product.prodMatrixSync(Ajson,Bjson);
 
-	// now the result is in the matrix_util.sync_result variable
+	// now the result is in the matrix_remote_product.sync_result variable
 
-	callbackFunction( matrix_util.sync_result );
+	callbackFunction( matrix_remote_product.sync_result );
 
 */

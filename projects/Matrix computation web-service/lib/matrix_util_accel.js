@@ -37,7 +37,7 @@
 	 * @param  {[type]} csrMatrix [description]
 	 * @return {[type]}           [description]
 	 */
-	matrix_util_accel.csrToJson = function (csrMatrix) {
+	var csrToJson = matrix_util_accel.csrToJson = function (csrMatrix) {
 		if ( csrMatrix.constructor != csr_matrix )
 			throw new Error("The argument of this function has to be a csr object.");
 		return csrMatrix.toJSON();
@@ -48,7 +48,7 @@
 	 * @param  {[type]} jsonMatrix [description]
 	 * @return {[type]}            [description]
 	 */
-	matrix_util_accel.jsonToCsr = function (jsonMatrix) {
+	var jsonToCsr = matrix_util_accel.jsonToCsr = function (jsonMatrix) {
 		return new csr_matrix_from_json(jsonMatrix);
 	}
 
@@ -64,7 +64,7 @@
 		if ( csrMatrixA.constructor != csr_matrix || csrMatrixB.constructor != csr_matrix )
 			throw new Error("csrMatrixA and csrMatrixB have to be csr_matrix objects.");
 
-		return new jsonToCsr(
+		return jsonToCsr(
 						csrJsonMatrixProduct(
 							csrToJson(csrMatrixA),
 							csrToJson(csrMatrixB)
@@ -81,7 +81,7 @@
 	 */
 	matrix_util_accel.denseMatrixProduct = function (denseMatrixA, denseMatrixB) {
 		
-		return (new jsonToCsr(
+		return (jsonToCsr(
 						csrJsonMatrixProduct(
 							csrToJson(new csr_matrix_from_dense(denseMatrixA)),
 							csrToJson(new csr_matrix_from_dense(denseMatrixB))
@@ -96,7 +96,7 @@
 	 * @param  {[type]} csrJsonMatrixB [description]
 	 * @return {[type]}                [description]
 	 */
-	matrix_util_accel.csrJsonMatrixProduct = function (csrJsonMatrixA,csrJsonMatrixB) {
+	var csrJsonMatrixProduct = matrix_util_accel.csrJsonMatrixProduct = function (csrJsonMatrixA,csrJsonMatrixB) {
 		
 		matrix_remote_product.prodMatrixSync(csrJsonMatrixA,csrJsonMatrixB);
 

@@ -70,7 +70,7 @@
 							csrToJson(csrMatrixB)
 							)
 						);
-		
+
 	}
 
 	/**
@@ -83,8 +83,8 @@
 		
 		return (new jsonToCsr(
 						csrJsonMatrixProduct(
-							new csr_matrix_from_dense(denseMatrixA).toJSON(),
-							new csr_matrix_from_dense(denseMatrixB).toJSON()
+							csrToJson(new csr_matrix_from_dense(denseMatrixA)),
+							csrToJson(new csr_matrix_from_dense(denseMatrixB))
 							)
 						)).toDense();
 

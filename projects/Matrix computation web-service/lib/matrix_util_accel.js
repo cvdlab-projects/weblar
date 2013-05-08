@@ -32,29 +32,110 @@
 	
 	var matrix_util_accel = exports.matrix_util_accel = {};
 
-	// TODO documentation
+	/**
+	 * [csrToJson description]
+	 * @param  {[type]} csrMatrix [description]
+	 * @return {[type]}           [description]
+	 */
 	matrix_util_accel.csrToJson = function (csrMatrix) {
-		if ( csrMatrix.constructor == csr_matrix )
+		if ( csrMatrix.constructor != csr_matrix )
 			throw new Error("The argument of this function has to be a csr object.");
 		return csrMatrix.toJSON();
 	}
 
-	// TODO documentation
+	/**
+	 * [jsonToCsr description]
+	 * @param  {[type]} jsonMatrix [description]
+	 * @return {[type]}            [description]
+	 */
 	matrix_util_accel.jsonToCsr = function (jsonMatrix) {
 		return new csr_matrix_from_json(jsonMatrix);
 	}
 
 
 	/**
-		// TODO documentation
+	 * [csrMatrixProduct description]
+	 * @param  {[type]} csrMatrixA [description]
+	 * @param  {[type]} csrMatrixB [description]
+	 * @return {[type]}            [description]
+	 */
+	matrix_util_accel.csrMatrixProduct = function (csrMatrixA, csrMatrixB) {
+
+		if ( csrMatrixA.constructor != csr_matrix || csrMatrixB.constructor != csr_matrix )
+			throw new Error("csrMatrixA and csrMatrixB have to be csr_matrix objects.");
+
+		return new jsonToCsr(
+						csrJsonMatrixProduct(
+							csrToJson(csrMatrixA),
+							csrToJson(csrMatrixB)
+							)
+						);
+		
+	}
+
+	/**
+	 * [denseMatrixProduct description]
+	 * @param  {[type]} denseMatrixA [description]
+	 * @param  {[type]} denseMatrixB [description]
+	 * @return {[type]}              [description]
+	 */
+	matrix_util_accel.denseMatrixProduct = function (denseMatrixA, denseMatrixB) {
+		
+		return (new jsonToCsr(
+						csrJsonMatrixProduct(
+							new csr_matrix_from_dense(denseMatrixA).toJSON(),
+							new csr_matrix_from_dense(denseMatrixB).toJSON()
+							)
+						)).toDense();
+
+	}
+
+	/**
+	 * [csrJsonMatrixProduct description]
+	 * @param  {[type]} csrJsonMatrixA [description]
+	 * @param  {[type]} csrJsonMatrixB [description]
+	 * @return {[type]}                [description]
+	 */
+	matrix_util_accel.csrJsonMatrixProduct = function (csrJsonMatrixA,csrJsonMatrixB) {
+		
+		matrix_remote_product.prodMatrixSync(csrJsonMatrixA,csrJsonMatrixB);
+
+		return JSON.parse(matrix_remote_product.sync_result);
+	}
+
+
+	/**
+	 * [cooJsonMatrixProduct description]
+	 * @param  {[type]} cooJsonMatrixA [description]
+	 * @param  {[type]} cooJsonMatrixB [description]
+	 * @return {[type]}                [description]
+	 */
+	/*
+	matrix_util_accel.cooJsonMatrixProduct = function (cooJsonMatrixA, cooJsonMatrixB) {
+		
+		if ( !isValidCooJson(cooJsonMatrixA) || !isValidCooJson(cooJsonMatrixB))
+			throw new Error("Format not valid. Needs two COO Json rapresentations with sorted rows. Syntax" +
+				"{ \"row\": [...], \"col\": [...], \"val\": [...], \"rowcount\": numberOfRows, \"colcount\": numberOfcolunms }");
+
+		throw new Error("Not yet implemented.");
+	}
+	*/
+
+	/**
 		[[0,1,0],[2,3,0],[0,0,1]]
 
 	 * var m = matrix_util_accel.cooRowSortedJsonMatrixToCsrMatrix({"row":[0,1,1,2],"col":[1,0,1,2],"val":[1,2,3,1],"colcount":3,"rowcount":3})
 	 */
+	
+	/**
+	 * [cooRowSortedJsonMatrixToCsrMatrix description]
+	 * @param  {[type]} cooJson [description]
+	 * @return {[type]}         [description]
+	 */
 	matrix_util_accel.cooRowSortedJsonMatrixToCsrMatrix = function (cooJson) {
 		
-		if ( !cooJson.hasOwnProperty("row") || !cooJson.hasOwnProperty("col") || !cooJson.hasOwnProperty("val") || !cooJson.hasOwnProperty("rowcount") || !cooJson.hasOwnProperty("colcount") )
-			throw new Error("Format not valid. Needs a COO Json rapresentation with sorted row. Syntax" +
+		if ( !isValidCooJson(cooJson) )
+			throw new Error("Format not valid. Needs a COO Json rapresentation with sorted rows. Syntax" +
 				"{ \"row\": [...], \"col\": [...], \"val\": [...], \"rowcount\": numberOfRows, \"colcount\": numberOfcolunms }");
 
 		var ptr = [];
@@ -72,20 +153,18 @@
 		for (i=0; i<cooJson.rowcount; i++)
 			ptr[i+1] += ptr[i];
 
-		var ptr_curr = 0;
-
 		for (i = 0; i < cooJson.row.length; i++) {
-			ptr_curr = ptr[cooJson.row[i]];
-			console.log("ptr_curr "+ptr_curr);
-			while ( col[ptr_curr] != undefined )
-				++ptr_curr;
-			console.log("ptr_curr reload "+ptr_curr);	
-			col[ptr_curr] = cooJson.col[i];
-			data[ptr_curr] = cooJson.val[i];
+			col[i] = cooJson.col[i];
+			data[i] = cooJson.val[i];
 		};
 
 		return new csr_matrix_from_json({ "ROW" : ptr, "COL" : col, "DATA" : data, "ROWCOUNT" : cooJson.rowcount, "COLCOUNT" : cooJson.colcount });
 
+	}
+
+	var isValidCooJson = function (cooJson) {
+		return !( !cooJson.hasOwnProperty("row") || !cooJson.hasOwnProperty("col") || !cooJson.hasOwnProperty("val") ||
+			 !cooJson.hasOwnProperty("rowcount") || !cooJson.hasOwnProperty("colcount") );
 	}
 
 }(this));

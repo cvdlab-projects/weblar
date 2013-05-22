@@ -20,6 +20,12 @@ var m = new lar.Model([ [0,0,0],[1,0,0],[1,1,0],[0,1,0],[0,1,1],[1,1,1],[1,0,1],
 var f = larFacets(m, 3);
 f.draw();
 
+// ESEMPIO FUNZIONANTE: CUBO FATTO DI CELLE TRIANGOLARI
+var m = new lar.Model([ [0,0,0],[1,0,0],[1,1,0],[0,1,0],[0,1,1],[1,1,1],[1,0,1],[0,0,1] ], 
+	[ [6,5,2,4],[1,2,6,3],[6,2,3,4],[6,7,4,3],[6,7,1,3],[0,7,1,3] ]);
+var f = larFacets(m, 3);
+f.draw();
+
 // ESEMPIO FINALE: DUE CUBI ATTACCATI - NON FUNZIONA, E DA UN MODELLO CON 333 CELLE X'D
 var m = new lar.Model([ [0,0,0],[1,0,0],[1,1,0],[0,1,0],[0,1,1],[1,1,1],[1,0,1],[0,0,1],[1,2,0],[0,2,0],[0,2,1],[1,2,1] ], 
 	[ [0,1,2,3,4,5,6,7],[2,3,4,5,8,9,10,11] ]);

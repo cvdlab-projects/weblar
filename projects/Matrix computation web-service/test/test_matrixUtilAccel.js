@@ -64,7 +64,7 @@ log("Matrix b : "); print(csrMatrixB.toJSON());
 log("Result : "); print(result.toJSON());
 
 
-// testing function : cooRowSortedJsonMatrixToCsrMatrix(jsonA,jsonB)
+// testing function : cooRSJsonMatrixToCsrMatrix(jsonA,jsonB)
 
 log("Test: example of a COO to CSR convertion starting from a JSON COO representation.");
 
@@ -79,18 +79,20 @@ log("Test: example of a COO to CSR convertion starting from a JSON COO represent
 
 var cooJsonMatrix = {"row":[0,0,1,3],"col":[0,2,1,3],"val":[4,9,7,5],"rowcount":4,"colcount":4};
 
-var csrConvertedMatrix = matrix_util_accel.cooRowSortedJsonMatrixToCsrMatrix(cooJsonMatrix);
+var csrConvertedMatrix = matrix_util_accel.cooRSJsonMatrixToCsrMatrix(cooJsonMatrix);
 
 
 // testing function : csrJsonMatrixProduct(jsonA,jsonB)
 
-log("Test: example of ...");
+log("Test: example of csr product starting from 2 json representation.");
 
 var csrJsonMatrixA = {"ROW":[0,2,3,3,4],"COL":[0,2,1,3],"DATA":[4,9,7,5],"ROWCOUNT":4,"COLCOUNT":4};
 
 var csrJsonMatrixB = {"ROW":[0,1,3,5,6],"COL":[1,0,1,0,1,0],"DATA":[1,2,3,4,5,6],"ROWCOUNT":4,"COLCOUNT":2};
 
 var resultJson = matrix_util_accel.csrJsonMatrixProduct(csrJsonMatrixA,csrJsonMatrixB);
+
+print(resultJson);
 
 // Of couse you can try other functions.
 // Uncomment the following tests to try them.

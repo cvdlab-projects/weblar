@@ -110,29 +110,71 @@
 	 * @param  {[type]} cooJsonMatrixB [description]
 	 * @return {[type]}                [description]
 	 */
-	/*
-	matrix_util_accel.cooJsonMatrixProduct = function (cooJsonMatrixA, cooJsonMatrixB) {
+
+	matrix_util_accel.cooRSJsonMatrixProduct = function (cooJsonMatrixA, cooJsonMatrixB) {
 		
 		if ( !isValidCooJson(cooJsonMatrixA) || !isValidCooJson(cooJsonMatrixB))
 			throw new Error("Format not valid. Needs two COO Json rapresentations with sorted rows. Syntax" +
 				"{ \"row\": [...], \"col\": [...], \"val\": [...], \"rowcount\": numberOfRows, \"colcount\": numberOfcolunms }");
 
-		throw new Error("Not yet implemented.");
+		return csrJsonMatrixToCooJsonMatrix(csrJsonMatrixProduct(cooRSJsonToCsr(cooJsonMatrixA), cooRSJsonToCsr(cooJsonMatrixB)))
+
 	}
-	*/
 
 	/**
-		[[0,1,0],[2,3,0],[0,0,1]]
-
-	 * var m = matrix_util_accel.cooRowSortedJsonMatrixToCsrMatrix({"row":[0,1,1,2],"col":[1,0,1,2],"val":[1,2,3,1],"colcount":3,"rowcount":3})
+	 * [ description]
+	 * @param  {[type]} csrJson [description]
+	 * @return {[type]}         [description]
 	 */
-	
+	matrix_util_accel.csrJsonMatrixToCooJsonMatrix = function (csrJson) {
+		
+		if ( !isValidCsrJson(csrJson) )
+			throw new Error("Format not valid. Needs a CSR Json rapresentation. Syntax" +
+				"{ \"ROW\": [...], \"COL\": [...], \"DATA\": [...], \"ROWCOUNT\": numberOfRows, \"COLCOUNT\": numberOfcolunms }");
+
+		var row = [];
+		var col = [];
+		var val = [];
+
+		var i,j;
+		var filled_index = 0;
+
+		// ottimizzazione csrJson.ROW.length = csrJson.ROWCOUNT+1
+
+		for (i=0; i < csrJson.ROW.length; i++){
+
+			if ( i+1 == csrJson.ROW.length){
+				return { "row" : row, "col" : col, "val" : val, "rowcount" : csrJson.ROWCOUNT, "colcount" : csrJson.COLCOUNT };
+			}
+
+			if ( csrJson.ROW[i] == csrJson.ROW[i+1] ){
+				continue;
+			}
+
+			for (j=0; j<(csrJson.ROW[i+1] - csrJson.ROW[i]); j++){
+				col[filled_index] = csrJson.COL[csrJson.ROW[i]+j];
+				row[filled_index] = i;
+				val[filled_index] = csrJson.DATA[csrJson.ROW[i]+j];
+				filled_index++;
+			}
+
+		}
+
+		throw new Error("Something terrible happends during CSR -> COO conversion.");
+
+	}
+
 	/**
 	 * [cooRowSortedJsonMatrixToCsrMatrix description]
 	 * @param  {[type]} cooJson [description]
 	 * @return {[type]}         [description]
 	 */
-	matrix_util_accel.cooRowSortedJsonMatrixToCsrMatrix = function (cooJson) {
+	/**
+		[[0,1,0],[2,3,0],[0,0,1]]
+
+	 * var m = matrix_util_accel.cooRowSortedJsonMatrixToCsrMatrix({"row":[0,1,1,2],"col":[1,0,1,2],"val":[1,2,3,1],"colcount":3,"rowcount":3})
+	 */
+	matrix_util_accel.cooRSJsonMatrixToCsrMatrix = function (cooJson) {
 		
 		if ( !isValidCooJson(cooJson) )
 			throw new Error("Format not valid. Needs a COO Json rapresentation with sorted rows. Syntax" +
@@ -162,9 +204,51 @@
 
 	}
 
+
+
+	/**
+	 * [ description]
+	 * @param  {[type]} cooJson [description]
+	 * @return {[type]}         [description]
+	 */
+	var cooRSJsonToCsr = matrix_util_accel.cooRSJsonMatrixToCsrJsonMatrix = function (cooJson) {
+		
+		if ( !isValidCooJson(cooJson) )
+			throw new Error("Format not valid. Needs a COO Json rapresentation with sorted rows. Syntax" +
+				"{ \"row\": [...], \"col\": [...], \"val\": [...], \"rowcount\": numberOfRows, \"colcount\": numberOfcolunms }");
+
+		var ptr = [];
+		var col = [];
+		var data = [];
+
+		var i;
+
+		for (i=0; i<=cooJson.rowcount; i++)
+			ptr[i] = 0;
+
+		for (i=0; i<cooJson.row.length; i++)
+			ptr[cooJson.row[i]+1]++;
+
+		for (i=0; i<cooJson.rowcount; i++)
+			ptr[i+1] += ptr[i];
+
+		for (i = 0; i < cooJson.row.length; i++) {
+			col[i] = cooJson.col[i];
+			data[i] = cooJson.val[i];
+		};
+
+		return { "ROW" : ptr, "COL" : col, "DATA" : data, "ROWCOUNT" : cooJson.rowcount, "COLCOUNT" : cooJson.colcount };
+
+	}
+
 	var isValidCooJson = function (cooJson) {
 		return !( !cooJson.hasOwnProperty("row") || !cooJson.hasOwnProperty("col") || !cooJson.hasOwnProperty("val") ||
 			 !cooJson.hasOwnProperty("rowcount") || !cooJson.hasOwnProperty("colcount") );
+	}
+
+	var isValidCsrJson = function (csrJson) {
+		return !( !csrJson.hasOwnProperty("ROW") || !csrJson.hasOwnProperty("COL") || !csrJson.hasOwnProperty("DATA") ||
+			 !csrJson.hasOwnProperty("ROWCOUNT") || !csrJson.hasOwnProperty("COLCOUNT") );
 	}
 
 }(this));

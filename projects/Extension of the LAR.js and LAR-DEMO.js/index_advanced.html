@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Linear Algebra Representation">
+  <meta name="author" content="Enrico Marino">
+  <meta name="author" content="Federico Spini">
+  <meta name="author" content="Alberto Paoluzzi">
+  <link rel="stylesheet" href="test/lar-demo/styles/bootstrap.css">
+  <link rel="stylesheet" href="test/lar-demo/styles/bootstrap-responsive.css">
+  <link rel="stylesheet" href="test/lar-demo/styles/style.css">
+</head>
+
+<body>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="index.html">LAR</a>
+        <ul class="nav">
+          <li><a id="link_about" href="#about">About</a></li>
+          <li><a id="link_github" href="https://github.com/cvdlab/lar" target="_blank">Github</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="plasm" class="container">
+    <div id="div_plasm"></div>
+    <div id="div_framerate"></div>
+  </div>
+
+  <div class="container">
+    <div class="control-group">
+      <input id="input_file" type="file">
+      <a id="example_01" href="examples/example_01.js" download>example 01</a>
+      <span>-</span>
+      <a id="example_02" href="examples/example_02.js" download>example 02</a>
+      <span>-</span>
+      <a id="example_03" href="examples/example_03.js" download>example 03</a>
+      <span>-</span>
+      <a id="example_04" href="examples/example_04.js" download>example 04</a>
+      <span>-</span>
+      <a id="example_05" href="examples/example_05.js" download>example 05</a>
+      <span>-</span>
+      <a id="example_06" href="examples/example_06.js" download>example 06</a>
+    </div>
+    <div class="control-group">
+      <textarea id="textarea_code"></textarea>
+    </div>
+    <div class="control-group">
+      <button id="button_next" class="btn">next</button>
+      <button id="button_eval" class="btn">eval</button>
+    </div>
+    
+  </div>
+
+  <script src="test/lar-demo/support/jquery.js"></script>
+  <script src="test/lar-demo/support/numeric.js"></script>
+  <script src="test/lar-demo/support/three.js"></script>
+  <script src="test/lar-demo/support/three-detector.js"></script>
+  <script src="test/lar-demo/support/three-frame.js"></script>
+  <script src="test/lar-demo/support/three-stats.js"></script>
+  <script src="test/lar-demo/support/three-trackball.js"></script>
+  <script src="test/lar-demo/support/simplexn.js"></script>
+  <script src="test/lar-demo/support/f.js"></script>
+
+  <script src="test/lar-demo/support/underscore.js"></script>
+  <script src="test/lar-demo/support/stick.js"></script>
+
+  <script src="test/lar-demo/support/bootstrap.js"></script>
+
+  <script src="test/lar-demo/support/emitter.js"></script>
+  <script src="test/lar-demo/support/reader.js"></script>
+  <script src="test/lar-demo/support/file.js"></script>
+  
+  <script src="test/lar-demo/lib/plasm.js"></script>
+  <script src="test/lar-demo/lib/plasm-fun.js"></script>
+  <script src="lib/lar.js"></script>
+  <script src="lib/larFacets_advanced.js"></script>
+  <script src="lib/larProduct_simple.js"></script>
+
+  <script src="test/lar-demo/index.js"></script>
+
+</body>
+
+</html>

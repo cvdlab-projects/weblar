@@ -122,7 +122,29 @@ Description.
 
 - - -
 
-### `cooRowSortedJsonMatrixToCsrMatrix(cooJson)`
+### `cooRSJsonMatrixProduct(cooJsonMatrixA,cooJsonMatrixB)`
+
+Description.
+
+#### I/O
+
+> #### in
+> `type` `arg`: descr.
+> 
+> #### out
+> `type`: descr.
+
+#### Example
+
+> ```js
+> here 
+> some
+> examples
+> ```
+
+- - -
+- 
+### `csrJsonMatrixToCooJsonMatrix(cooJson)`
 
 Description.
 
@@ -144,7 +166,29 @@ Description.
 
 - - -
 
-### `cooRowSortedJsonMatrixToCsrJsonMatrix(cooJson)`
+### `cooRSJsonMatrixToCsrMatrix(cooJson)`
+
+Description.
+
+#### I/O
+
+> #### in
+> `type` `arg`: descr.
+> 
+> #### out
+> `type`: descr.
+
+#### Example
+
+> ```js
+> here 
+> some
+> examples
+> ```
+
+- - -
+
+### `cooRSJsonMatrixToCsrJsonMatrix(cooJson)`
 
 Description.
 

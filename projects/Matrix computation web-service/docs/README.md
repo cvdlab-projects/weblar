@@ -1,73 +1,57 @@
 # matrix_util_accel.js
 
-### JavaScript library to manage matrix operations with different representations
+### JavaScript library that manages matrix operations in an easy and fast way with different representations
+
+Dependences: `node-lar-multiply-rest`, `csr.js`, `coo.js`.
 
 - - -
 
-### `BEZIER(sel)(controlpoints)`
-Transfinite mapping function of genric degree Bezier curve.
+### `csrToJson(csrMatrix)`
+
+Convert a csr_matrix instance in a JSON.
 
 #### I/O
 
 > #### in
-> `Function` `selector`: domain coordinate selector function.
->
-> > #### in
-> > `Array` `v`: point of the `domain`.
-> >
-> > #### out
-> > `Number`: the selected coordinate. 
+> `csr_matrix` `csrMatrix`: a csr_matrix instance.
 > 
 > #### out
-> `Function`: an anonymous function.
-> 
-> > #### in
-> > `Array` `controlpoints`: an array of points and curve mapping functions describing curve control points.
-> >
-> > #### out
-> > `Function`: an anonymous mapping function.
+> `JSON`: a JSON representing a CSR matrix.
 
 #### Example
 
 > ```js
-> var domain = INTERVALS(1)(32);
-> var controlpoints = [[-0,0],[1,0],[1,1],[2,1],[3,1]];
-> var curveMapping = BEZIER(S0)(controlpoints);
-> var curve = MAP(curveMapping)(domain);
-> DRAW(curve);
+> var csrMatrix = new csr_matrix_from_json(
+  { 
+    "ROW":[0,2,3,5,7],
+    "COL":[1,2,1,0,1,0,2],
+    "DATA":[1,1,2,1,3,1,1],
+    "ROWCOUNT":4,
+    "COLCOUNT":3
+  });
+>
+> var csrJson = matrix_util_accel.csrToJson(csrMatrix);
 > ```
 
-> ```js
-> var domain = PROD1x1([INTERVALS(1)(16),INTERVALS(1)(16)]);
-> var c0 = BEZIER(S0)([[0,0,0],[10,0,0]]);
-> var c1 = BEZIER(S0)([[0,2,0],[8,3,0],[9,2,0]]);
-> var c2 = BEZIER(S0)([[0,4,1],[7,5,-1],[8,5,1],[12,4,0]]);
-> var c3 = BEZIER(S0)([[0,6,0],[9,6,3],[10,6,-1]]);
-> var out = MAP(BEZIER(S1)([c0,c1,c2,c3]))(domain);
-> DRAW(out);
->```
-
 - - -
 
-### `BOUNDARY(d)(model)`
+### `jsonToCsr(jsonCsrMatrix)`
 
-Get the `d`-boundary of the `model`.
+From a JSON containing a csr matrix representation create a new csr_matrix instance.
 
 #### I/O
 
 > #### in
-> `Number` `d`: space dimension.
+> `JSON` `jsonCsrMatrix`: a JSON representing a CSR matrix.
 > 
 > #### out
-> `plasm.Model`: the `d`-boundary of the `model`.
+> `csr_matrix`: a csr_matrix instance.
 
 #### Example
 
 > ```js
-> var d = 1;
-> var model = TORUS_SURFACE()();
-> var boundary = BOUNDARY(d)(model);
-> DRAW(boundary);
+> var json = { "ROW" : [0,2,3,4], "COL" : [0,2,1,0], "DATA" : [1,1,1,1], "ROWCOUNT" : 3, "COLCOUNT" : 3 };
+> var csrMatrix = matrix_util_accel.jsonToCsr(json);
 > ```
 
 - - -

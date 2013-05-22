@@ -100,7 +100,7 @@
 		
 		matrix_remote_product.prodMatrixSync(csrJsonMatrixA,csrJsonMatrixB);
 
-		return JSON.parse( matrix_remote_product.sync_result );
+		return matrix_remote_product.sync_result;
 	}
 
 

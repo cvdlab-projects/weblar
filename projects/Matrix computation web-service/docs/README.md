@@ -55,3 +55,113 @@ From a JSON containing a csr matrix representation create a new csr_matrix insta
 > ```
 
 - - -
+
+### `csrMatrixProduct(csrMatrixA, csrMatrixB)`
+
+Description.
+
+#### I/O
+
+> #### in
+> `type` `arg`: descr.
+> 
+> #### out
+> `type`: descr.
+
+#### Example
+
+> ```js
+> here 
+> some
+> examples
+> ```
+
+- - -
+
+### `denseMatrixProduct(denseMatrixA, denseMatrixB)`
+
+Description.
+
+#### I/O
+
+> #### in
+> `type` `arg`: descr.
+> 
+> #### out
+> `type`: descr.
+
+#### Example
+
+> ```js
+> here 
+> some
+> examples
+> ```
+
+- - -
+
+### `csrJsonMatrixProduct(csrJsonMatrixA,csrJsonMatrixB)`
+
+Description.
+
+#### I/O
+
+> #### in
+> `type` `arg`: descr.
+> 
+> #### out
+> `type`: descr.
+
+#### Example
+
+> ```js
+> here 
+> some
+> examples
+> ```
+
+- - -
+
+### `cooRowSortedJsonMatrixToCsrMatrix(cooJson)`
+
+Description.
+
+#### I/O
+
+> #### in
+> `type` `arg`: descr.
+> 
+> #### out
+> `type`: descr.
+
+#### Example
+
+> ```js
+> here 
+> some
+> examples
+> ```
+
+- - -
+
+### `cooRowSortedJsonMatrixToCsrJsonMatrix(cooJson)`
+
+Description.
+
+#### I/O
+
+> #### in
+> `type` `arg`: descr.
+> 
+> #### out
+> `type`: descr.
+
+#### Example
+
+> ```js
+> here 
+> some
+> examples
+> ```
+
+- - -

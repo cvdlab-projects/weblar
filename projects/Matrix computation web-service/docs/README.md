@@ -143,7 +143,7 @@ Description.
 > ```
 
 - - -
-- 
+
 ### `csrJsonMatrixToCooJsonMatrix(cooJson)`
 
 Description.

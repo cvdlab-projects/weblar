@@ -13,12 +13,12 @@
 	 * @return {[type]}         [description]
 	 */
 	function coo_matrix(objargs) {
-		this.row = objargs.row || throw new Error();
-		this.col = objargs.col || throw new Error();
-		this.val = objargs.val || throw new Error();
-		this.rowcount = objargs.colcount || throw new Error();
-		this.colcount = objargs.rowcount || throw new Error();
-		this.nnz = this.val.length || throw new Error();
+		this.row = objargs.row || undefined;
+		this.col = objargs.col || undefined;
+		this.val = objargs.val || undefined;
+		this.rowcount = objargs.colcount || undefined;
+		this.colcount = objargs.rowcount || undefined;
+		this.nnz = this.val.length || undefined;
 	}
 	
 	/**

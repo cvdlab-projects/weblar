@@ -11,6 +11,8 @@ Web LAR project
 * Luca Menichetti
 * Oscar Eijsermans
 
+[Tasks assigmnent](https://github.com/cvdlab-bio/weblar/blob/master/projects/README.md)
+
 ## Website
 
 *Under construction*

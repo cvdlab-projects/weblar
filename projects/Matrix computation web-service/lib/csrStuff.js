@@ -42,13 +42,14 @@ if ( !Array.prototype.unique ) {
 }
 
 /**
- * @description Library that offers classes to represent and manipulate a sparse matrix. 
+ * @description Library that offers classes to represent and manipulate a sparse matrix in CSR. 
  *
  * @class csr_matrix Create a matrix csr reference from various JSON structures.
  * @class csr_matrix_from_json Create a matrix csr reference from a specific structured JSON.
  * 
  * @author Francesco Furiani
  * @author Luca Menichetti
+ * @author Fabrizio Rebecca
  */
 
 !(function (exports){
@@ -624,7 +625,7 @@ if ( !Array.prototype.unique ) {
 	};
 
 	csr_matrix.prototype.toString = function() {
-		var outString = "Sparse Matrix ("+this.getRowCount()+" x "+this.getColCount()+") Nnz: "+this.getNonZeroElementsCount()+"\n";
+		var outString = "Sparse Matrix CSR ("+this.getRowCount()+" x "+this.getColCount()+") Nnz: "+this.getNonZeroElementsCount()+"\n";
 		outString += "RowPtr " + this.getRowPointer() + "\n";
 		outString += "Column Indices " + this.getColumnIndices() + "\n";
 		outString += "Data " + this.getData() + "\n";
@@ -632,11 +633,10 @@ if ( !Array.prototype.unique ) {
 		return outString;
 	};
 
-
-	/*
-		
-	*/
-
+	/**
+	 * [ description]
+	 * @return {[type]} [description]
+	 */
 	csr_matrix.prototype.toJSON = function() {
 		return {"ROW" : this.getRowPointer(),
 				"COL": this.getColumnIndices(),
@@ -644,6 +644,46 @@ if ( !Array.prototype.unique ) {
 				"ROWCOUNT": this.getRowCount(),
 				"COLCOUNT": this.getColCount()};
 	};
+
+	/**
+	 * [ description]
+	 * @return {[type]} [description]
+	 */
+	csr_matrix.prototype.toCooJSON = function() {
+
+		var row = [];
+		var col = [];
+		var val = [];
+
+		var i,j;
+		var filled_index = 0;
+
+		// ottimizzazione this.getRowPointer().length = csrJson.ROWCOUNT+1
+
+		for (i=0; i < this.getRowPointer().length; i++){
+
+			if ( i+1 == this.getRowPointer().length){
+				return { "row" : row, "col" : col, "val" : val, "rowcount" : this.getRowCount(), "colcount" : this.getColCount() };
+			}
+
+			if ( this.getRowPointer()[i] == this.getRowPointer()[i+1] ){
+				continue;
+			}
+
+			for (j=0; j<(this.getRowPointer()[i+1] - this.getRowPointer()[i]); j++){
+				col[filled_index] = this.getColCount()[this.getRowPointer()[i]+j];
+				row[filled_index] = i;
+				val[filled_index] = this.getData()[this.getRowPointer()[i]+j];
+				filled_index++;
+			}
+
+		}
+
+		throw new Error("Something terrible happends during CSR -> COO conversion.");
+
+	};
+
+
 
 	exports.csr_matrix = csr_matrix;
 	exports.csr_matrix_from_json = csr_matrix_from_json;

@@ -117,7 +117,7 @@
 			throw new Error("Format not valid. Needs two COO Json rapresentations with sorted rows. Syntax" +
 				"{ \"row\": [...], \"col\": [...], \"val\": [...], \"rowcount\": numberOfRows, \"colcount\": numberOfcolunms }");
 
-		return csrJsonMatrixToCooJsonMatrix(csrJsonMatrixProduct(cooRSJsonToCsr(cooJsonMatrixA), cooRSJsonToCsr(cooJsonMatrixB)))
+		return csrJsonMatrixToCooJsonMatrix(csrJsonMatrixProduct(cooRSJsonToCsrJson(cooJsonMatrixA), cooRSJsonToCsrJson(cooJsonMatrixB)))
 
 	}
 
@@ -175,32 +175,8 @@
 	 * var m = matrix_util_accel.cooRowSortedJsonMatrixToCsrMatrix({"row":[0,1,1,2],"col":[1,0,1,2],"val":[1,2,3,1],"colcount":3,"rowcount":3})
 	 */
 	matrix_util_accel.cooRSJsonMatrixToCsrMatrix = function (cooJson) {
-		
-		if ( !isValidCooJson(cooJson) )
-			throw new Error("Format not valid. Needs a COO Json rapresentation with sorted rows. Syntax" +
-				"{ \"row\": [...], \"col\": [...], \"val\": [...], \"rowcount\": numberOfRows, \"colcount\": numberOfcolunms }");
 
-		var ptr = [];
-		var col = [];
-		var data = [];
-
-		var i;
-
-		for (i=0; i<=cooJson.rowcount; i++)
-			ptr[i] = 0;
-
-		for (i=0; i<cooJson.row.length; i++)
-			ptr[cooJson.row[i]+1]++;
-
-		for (i=0; i<cooJson.rowcount; i++)
-			ptr[i+1] += ptr[i];
-
-		for (i = 0; i < cooJson.row.length; i++) {
-			col[i] = cooJson.col[i];
-			data[i] = cooJson.val[i];
-		};
-
-		return new csr_matrix_from_json({ "ROW" : ptr, "COL" : col, "DATA" : data, "ROWCOUNT" : cooJson.rowcount, "COLCOUNT" : cooJson.colcount });
+		return new csr_matrix_from_json(cooRSJsonToCsrJson(cooJson));
 
 	}
 
@@ -211,7 +187,7 @@
 	 * @param  {[type]} cooJson [description]
 	 * @return {[type]}         [description]
 	 */
-	var cooRSJsonToCsr = matrix_util_accel.cooRSJsonMatrixToCsrJsonMatrix = function (cooJson) {
+	var cooRSJsonToCsrJson = matrix_util_accel.cooRSJsonMatrixToCsrJsonMatrix = function (cooJson) {
 		
 		if ( !isValidCooJson(cooJson) )
 			throw new Error("Format not valid. Needs a COO Json rapresentation with sorted rows. Syntax" +

@@ -1,6 +1,6 @@
 # weblar
 
-Web LAR project
+Web LAR project ([download pdf with project description](https://github.com/cvdlab-bio/weblar/blob/master/slides/2013-04-11.pdf?raw=true))
 
 ## Authors
 

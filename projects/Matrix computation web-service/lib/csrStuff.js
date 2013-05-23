@@ -671,7 +671,7 @@ if ( !Array.prototype.unique ) {
 			}
 
 			for (j=0; j<(this.getRowPointer()[i+1] - this.getRowPointer()[i]); j++){
-				col[filled_index] = this.getColCount()[this.getRowPointer()[i]+j];
+				col[filled_index] = this.getCol()[this.getRowPointer()[i]+j];
 				row[filled_index] = i;
 				val[filled_index] = this.getData()[this.getRowPointer()[i]+j];
 				filled_index++;

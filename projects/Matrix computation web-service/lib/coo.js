@@ -7,6 +7,14 @@
 * @licence MIT
 */
 
+if ( !Array.prototype.equalsV8 ) {
+	Object.defineProperty(Array.prototype, 'equalsV8', {
+		value: function(otherArray) {
+			return !(this<otherArray || otherArray<this);
+		}
+	});
+}
+
 !(function (exports){
 
 	/**
@@ -85,7 +93,6 @@
 		if (!isInteger(objargs.num_cols)){
 			throw new Error("num_cols has to be an integer."); 
 		}
-
 
 		var row = [];
 		var col = [];
@@ -225,8 +232,20 @@
 	};
 
 	coo_matrix.prototype.equals = function(other) {
-		// TODO
-		throw new Error('not yet implemented.');
+		if ((other instanceof csr_matrix) === false) {
+			return false;
+		}
+
+		// It's me!
+		if ( this === other ) {
+			return true;
+		}
+
+		return	( this.getRowCount() == other.getRowCount() ) &&
+				( this.getColCount() == other.getColCount() ) &&
+				this.getRow().equalsV8(other.getRow()) &&
+				this.getColumn().equalsV8(other.getColumn()) &&
+				this.getVal().equalsV8(other.getVal());
 	};
 
 	/**

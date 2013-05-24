@@ -6,9 +6,12 @@
 * @licence MIT
 */
 
-
 !(function (exports){
 	
+	/**
+	 * [matrix_util_accel description]
+	 * @type {[type]}
+	 */
 	var matrix_util_accel = exports.matrix_util_accel = {};
 
 	/**
@@ -159,8 +162,6 @@
 
 	};
 
-
-
 	/**
 	 * [ description]
 	 * @param  {[type]} cooJson [description]
@@ -196,11 +197,21 @@
 
 	};
 
+	/**
+	 * [ description]
+	 * @param  {[type]} cooJson [description]
+	 * @return {[type]}         [description]
+	 */
 	var isValidCooJson = function (cooJson) {
 		return !( !cooJson.hasOwnProperty("row") || !cooJson.hasOwnProperty("col") || !cooJson.hasOwnProperty("val") ||
 			!cooJson.hasOwnProperty("rowcount") || !cooJson.hasOwnProperty("colcount") );
 	};
 
+	/**
+	 * [ description]
+	 * @param  {[type]} csrJson [description]
+	 * @return {[type]}         [description]
+	 */
 	var isValidCsrJson = function (csrJson) {
 		return !( !csrJson.hasOwnProperty("ROW") || !csrJson.hasOwnProperty("COL") || !csrJson.hasOwnProperty("DATA") ||
 			!csrJson.hasOwnProperty("ROWCOUNT") || !csrJson.hasOwnProperty("COLCOUNT") );

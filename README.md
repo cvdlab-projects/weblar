@@ -1,6 +1,6 @@
 # weblar
 
-Web LAR project
+Web LAR project ([download pdf with project's description](https://github.com/cvdlab-bio/weblar/blob/master/slides/2013-04-11.pdf?raw=true))
 
 ## Authors
 
@@ -10,6 +10,8 @@ Web LAR project
 * Fabrizio Rebecca
 * Luca Menichetti
 * Oscar Eijsermans
+
+[Tasks assignment](https://github.com/cvdlab-bio/weblar/blob/master/projects/README.md)
 
 ## Website
 

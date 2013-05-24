@@ -1,3 +1,11 @@
+/**!
+* csr.js
+*
+* @author Francesco Furiani, Luca Menichetti and Fabrizio Rebecca
+* @copyright 2013 Francesco Furiani, Luca Menichetti and Fabrizio Rebecca
+* @licence MIT
+*/
+
 /*
 	require("./array.prototype.js")
 */
@@ -42,7 +50,7 @@ if ( !Array.prototype.unique ) {
 }
 
 /**
- * @description Library that offers classes to represent and manipulate a sparse matrix in CSR. 
+ * @description Library that offers a class to represent and manipulate a sparse matrix in CSR. 
  *
  * @class csr_matrix Create a matrix csr reference from various JSON structures.
  * @class csr_matrix_from_json Create a matrix csr reference from a specific structured JSON.
@@ -68,11 +76,11 @@ if ( !Array.prototype.unique ) {
 	};
 
 	var newFilledArray = function(len, val) {
-	    var a = [];
-	    while(len--){
-	        a.push(val);
-	    }
-	    return a;
+		var a = [];
+		while(len--){
+			a.push(val);
+		}
+		return a;
 	};
 
 
@@ -115,12 +123,12 @@ if ( !Array.prototype.unique ) {
 			objargs.hasOwnProperty("ROWCOUNT") || objargs.hasOwnProperty("COLCOUNT")){
 
 			// ...means that 'objargs' is a json and has to have all this arguments
- 			if ( !objargs.hasOwnProperty("ROW") || !objargs.hasOwnProperty("COL") || !objargs.hasOwnProperty("DATA") ||
-				 !objargs.hasOwnProperty("ROWCOUNT") || !objargs.hasOwnProperty("COLCOUNT")){
+			if ( !objargs.hasOwnProperty("ROW") || !objargs.hasOwnProperty("COL") || !objargs.hasOwnProperty("DATA") ||
+				!objargs.hasOwnProperty("ROWCOUNT") || !objargs.hasOwnProperty("COLCOUNT")){
 				throw new Error("Some arguments are not valid. " +
 					"For example the syntax is : { \"ROW\" : [0,2,3,4], \"COL\" : [0,2,1,0], " +
 					"\"DATA\" : [1,1,1,1], \"ROWCOUNT\" : 3, \"COLCOUNT\" : 3 }.");
- 			}
+			}
 
 			objargs = { 
 				"rowptr" : objargs.ROW,
@@ -359,7 +367,6 @@ if ( !Array.prototype.unique ) {
 					tmp_rowptr.push( nnz );
 					prevRow = rowCount;
 				}
-
 				if ( objargs.fromdense[i] !== 0 ) {
 					tmp_col.push( colIdx );
 					tmp_data.push( objargs.fromdense[i] );
@@ -472,9 +479,9 @@ if ( !Array.prototype.unique ) {
 		}
 
 		var argMatrix = matrix.transpose();
-	    var denseResult = new Array(this.getRowCount() * matrix.getColCount());
+		var denseResult = new Array(this.getRowCount() * matrix.getColCount());
 
-	    for (var i = 0; i < this.getRowCount(); i++) {
+		for (var i = 0; i < this.getRowCount(); i++) {
 			for (var j = 0; j < argMatrix.getRowCount(); j++) {
 
 				var ArowCur = this.getRowPointer()[i],
@@ -488,9 +495,9 @@ if ( !Array.prototype.unique ) {
 				var AcurIdx = this.getColumnIndices()[ArowCur],
 					BcurIdx = argMatrix.getColumnIndices()[BrowCur];
 
-	            var localSum = 0;
+				var localSum = 0;
 
-	            while ((curPosA < ArowEnd) && (curPosB < BrowEnd)) {
+				while ((curPosA < ArowEnd) && (curPosB < BrowEnd)) {
 					AcurIdx = this.getColumnIndices()[curPosA];
 					BcurIdx = argMatrix.getColumnIndices()[curPosB];
 

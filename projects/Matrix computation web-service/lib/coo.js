@@ -1,11 +1,22 @@
-/**
- * @description Library that offers classes to represent and manipulate a sparse matrix in COO. 
- *
- * @author Fabrizio Rebecca
- * @author Luca Menichetti
- */
+/**!
+* coo.js
+*
+* @description Library that offers a class to represent and manipulate a sparse matrix in COO. 
+* @author Luca Menichetti and Fabrizio Rebecca
+* @copyright 2013 Luca Menichetti and Fabrizio Rebecca
+* @licence MIT
+*/
 
 !(function (exports){
+
+	/**
+	 * [ description]
+	 * @param  {[type]} value [description]
+	 * @return {[type]}       [description]
+	 */
+	var isInteger = function(value) {
+		return (!isNaN(value) && (Math.floor(value) === value));
+	};
 
 	/**
 	 * [coo_matrix description]
@@ -18,7 +29,7 @@
 		this.val = objargs.val || undefined;
 		this.rowcount = objargs.colcount || undefined;
 		this.colcount = objargs.rowcount || undefined;
-		this.nnz = this.val.length || undefined;
+		this.nnz = objargs.rowcount.nnz || this.val.length || undefined;
 	}
 	
 	/**
@@ -29,11 +40,11 @@
 	function coo_matrix_from_json(objargs){
 
 		if ( !objargs.hasOwnProperty("row") || !objargs.hasOwnProperty("col") || !objargs.hasOwnProperty("val") ||
-				 !objargs.hasOwnProperty("rowcount") || !objargs.hasOwnProperty("colcount")){
+				!objargs.hasOwnProperty("rowcount") || !objargs.hasOwnProperty("colcount")){
 				throw new Error("Some arguments are missing. " +
 					"For example the syntax is : { \"row\" : [0,2,3,4], \"col\" : [0,2,1,0], " +
 					"\"val\" : [1,1,1,1], \"rowcount\" : 3, \"colcount\" : 3 }.");
- 			}
+			}
 		
 		return new coo_matrix(objargs);
 	}
@@ -44,18 +55,15 @@
 	 * @return {[type]}             [description]
 	 */
 	function coo_matrix_from_dense(denseMatrix) {
-		
 
-		throw new Error("Not yet implemented.");
-
-		/*if ( !denseMatrix instanceof Array || !denseMatrix[0] instanceof Array ){
+		if ( !denseMatrix instanceof Array || !denseMatrix[0] instanceof Array ){
 			throw new Error("denseMatrix has to be an Array of Array."); 
 		}
 
-		return new csr_matrix({
-			"fromdense" : [].concat.apply([],denseMatrix),
-			"numcols" : denseMatrix[0].length
-		});*/
+		return new coo_matrix_from_flat({
+			"flat_matrix" : [].concat.apply([],denseMatrix),
+			"num_cols" : denseMatrix[0].length
+		});
 
 	}
 
@@ -66,24 +74,38 @@
 	 */
 	function coo_matrix_from_flat(objargs) {
 
-		throw new Error("Not yet implemented.");
-
-		/*if ( !objargs.hasOwnProperty("FLAT") || !objargs.hasOwnProperty("colUMNS") ){
-			throw new Error("Invalid JSON format. The param has to be : { \"FLAT\" : array , \"colUMNS\" : value }"); 
+		if ( !objargs.hasOwnProperty("flat_matrix") || !objargs.hasOwnProperty("num_cols") ){
+			throw new Error("Invalid JSON format. The param has to be : { \"flat_matrix\" : array , \"num_cols\" : value }"); 
 		}
 
-		if ( !objargs.FLAT instanceof Array ){
-			throw new Error("FLAT has to be an Array."); 
+		if ( !objargs.flat_matrix instanceof Array ){
+			throw new Error("flat_matrix has to be an Array."); 
 		}
 
-		if (!isInteger(objargs.colUMNS)){
-			throw new Error("colUMNS has to be an integer."); 
+		if (!isInteger(objargs.num_cols)){
+			throw new Error("num_cols has to be an integer."); 
 		}
 
-		return new csr_matrix({
-			"fromdense" : objargs.FLAT ,
-			"numcols" : objargs.colUMNS
-		});*/
+
+		var row = [];
+		var col = [];
+		var val = [];
+
+		var count = 0;
+
+		for (var x = 0; x < objargs.flat_matrix.length; x++) {
+			if (objargs.flat_matrix[x] !== 0){
+				i = Math.floor( x / objargs.num_cols );
+				j = x - i * objargs.num_cols;
+				row[count] = i;
+				col[count] = j;
+				val[count] = objargs.flat_matrix[x];
+				count++;
+			}
+		}
+
+		return coo_matrix({ "row" : [0,2,3,4], "col" : [0,2,1,0], "val" : [1,1,1,1], 
+				"rowcount" : objargs.flat_matrix.length / objargs.num_cols, "colcount" : objargs.num_cols , "nnz" : count });
 
 	}
 
@@ -150,42 +172,19 @@
 	};
 
 	coo_matrix.prototype.pushEmptyrow = function() {
-		//TODO
-		return;
-		this.row.push( this.getrowPointer()[this.getrowPointer().length - 1] );
-		this.numrow = this.getrowPointer().length - 1;
+		++this.rowcount;
 	};
 
 	coo_matrix.prototype.popEmptyrow = function() {
-
-		//TODO
-		return;
-		if (this.getrowcount() <= 1) {
-			throw new Error('Cannot remove any more rows');
-		}
-
-		if ( this.getrowPointer()[this.getrowcount()] != this.getrowPointer()[this.getrowcount() + 1] ) {
-			throw new Error('Cannot remove any more rows');
-		}
-
-		this.row.pop();
-		this.numrow = this.getrowPointer().length - 1;
+		--this.rowcount;
 	};
 
 	coo_matrix.prototype.pushEmptycolumn = function() {
-		//TODO
-		return;
-		this.emptycolumns += 1;
+		++this.colcount;
 	};
 
 	coo_matrix.prototype.popEmptycolumn = function() {
-		//TODO
-		return;
-		if (this.emptycolumns <= 0) {
-			throw new Error('Cannot remove any more columns');
-		}
-
-		this.emptycolumns -= 1;
+		--this.colcount;
 	};
 
 	
@@ -203,8 +202,26 @@
 	};
 
 	coo_matrix.prototype.toDense = function() {
-		// TODO
-		throw new Error('not yet implemented.');
+		
+		var dense = new Array(this.rowcount);
+
+		dense[0] = [];
+
+		var i;
+
+		for (i = 0; i < this.colcount; i++) {
+			dense[0].push(0);
+		}
+
+		for (i = 1; i < this.rowcount; i++) {
+			dense[i] = dense[0].slice();
+		}
+
+		for (i = 0; i < this.row.length; i++) {
+			dense[this.row[i]][this.col[i]] = this.val[i];
+		}
+
+		return dense;
 	};
 
 	coo_matrix.prototype.equals = function(other) {
@@ -262,7 +279,7 @@
 		for (i = 0; i < this.row.length; i++) {
 			col[i] = this.col[i];
 			data[i] = this.val[i];
-		};
+		}
 
 		return { "ROW" : ptr, "COL" : col, "DATA" : data, "ROWCOUNT" : this.rowcount, "COLCOUNT" : this.colcount };
 

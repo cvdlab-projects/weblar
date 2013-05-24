@@ -231,6 +231,11 @@ if ( !Array.prototype.equalsV8 ) {
 		return dense;
 	};
 
+	/**
+	 * [ description]
+	 * @param  {[type]} other [description]
+	 * @return {[type]}       [description]
+	 */
 	coo_matrix.prototype.equals = function(other) {
 		if ((other instanceof csr_matrix) === false) {
 			return false;

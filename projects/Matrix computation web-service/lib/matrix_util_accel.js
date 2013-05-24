@@ -6,7 +6,7 @@
 
 	The MIT License
 	===============
-	    
+	
 	Permission is hereby granted, free of charge, to any person obtaining
 	a copy of this software and associated documentation files (the
 	'Software'), to deal in the Software without restriction, including
@@ -41,7 +41,7 @@
 		if ( csrMatrix.constructor != csr_matrix )
 			throw new Error("The argument of this function has to be a csr object.");
 		return csrMatrix.toJSON();
-	}
+	};
 
 	/**
 	 * [jsonToCsr description]
@@ -50,7 +50,7 @@
 	 */
 	var jsonToCsr = matrix_util_accel.jsonToCsr = function (jsonMatrix) {
 		return new csr_matrix_from_json(jsonMatrix);
-	}
+	};
 
 
 	/**
@@ -71,7 +71,7 @@
 							)
 						);
 
-	}
+	};
 
 	/**
 	 * [denseMatrixProduct description]
@@ -88,7 +88,7 @@
 							)
 						)).toDense();
 
-	}
+	};
 
 	/**
 	 * [csrJsonMatrixProduct description]
@@ -101,7 +101,7 @@
 		matrix_remote_product.prodMatrixSync(csrJsonMatrixA,csrJsonMatrixB);
 
 		return matrix_remote_product.sync_result;
-	}
+	};
 
 
 	/**
@@ -117,9 +117,9 @@
 			throw new Error("Format not valid. Needs two COO Json rapresentations with sorted rows. Syntax" +
 				"{ \"row\": [...], \"col\": [...], \"val\": [...], \"rowcount\": numberOfRows, \"colcount\": numberOfcolunms }");
 
-		return csrJsonMatrixToCooJsonMatrix(csrJsonMatrixProduct(cooRSJsonToCsrJson(cooJsonMatrixA), cooRSJsonToCsrJson(cooJsonMatrixB)))
+		return csrJsonMatrixToCooJsonMatrix(csrJsonMatrixProduct(cooRSJsonToCsrJson(cooJsonMatrixA), cooRSJsonToCsrJson(cooJsonMatrixB)));
 
-	}
+	};
 
 	/**
 	 * [ description]
@@ -162,7 +162,7 @@
 
 		throw new Error("Something terrible happends during CSR -> COO conversion.");
 
-	}
+	};
 
 	/**
 	 * [cooRowSortedJsonMatrixToCsrMatrix description]
@@ -178,7 +178,7 @@
 
 		return new csr_matrix_from_json(cooRSJsonToCsrJson(cooJson));
 
-	}
+	};
 
 
 
@@ -211,20 +211,20 @@
 		for (i = 0; i < cooJson.row.length; i++) {
 			col[i] = cooJson.col[i];
 			data[i] = cooJson.val[i];
-		};
+		}
 
 		return { "ROW" : ptr, "COL" : col, "DATA" : data, "ROWCOUNT" : cooJson.rowcount, "COLCOUNT" : cooJson.colcount };
 
-	}
+	};
 
 	var isValidCooJson = function (cooJson) {
 		return !( !cooJson.hasOwnProperty("row") || !cooJson.hasOwnProperty("col") || !cooJson.hasOwnProperty("val") ||
-			 !cooJson.hasOwnProperty("rowcount") || !cooJson.hasOwnProperty("colcount") );
-	}
+			!cooJson.hasOwnProperty("rowcount") || !cooJson.hasOwnProperty("colcount") );
+	};
 
 	var isValidCsrJson = function (csrJson) {
 		return !( !csrJson.hasOwnProperty("ROW") || !csrJson.hasOwnProperty("COL") || !csrJson.hasOwnProperty("DATA") ||
-			 !csrJson.hasOwnProperty("ROWCOUNT") || !csrJson.hasOwnProperty("COLCOUNT") );
-	}
+			!csrJson.hasOwnProperty("ROWCOUNT") || !csrJson.hasOwnProperty("COLCOUNT") );
+	};
 
 }(this));

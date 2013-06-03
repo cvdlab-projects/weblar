@@ -21,9 +21,9 @@
 	 * @param  {[type]} csrJsonMatrixB [description]
 	 * @return {[type]}                [description]
 	 */
-	var csrJsonMatrixProduct = matrix_util_accel_json.csr_json_product = function (csrJsonMatrixA,csrJsonMatrixB) {
+	var csr_json_product = matrix_util_accel_json.csr_json_product = function (csrJsonMatrixA,csrJsonMatrixB) {
 		
-		matrix_remote_product.prod_matrix_sync(csrJsonMatrixA,csrJsonMatrixB);
+		matrix_remote_product.prodMatrixSync(csrJsonMatrixA,csrJsonMatrixB);
 
 		return matrix_remote_product.sync_result;
 	};

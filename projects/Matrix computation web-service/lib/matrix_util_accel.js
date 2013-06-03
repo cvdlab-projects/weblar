@@ -46,7 +46,7 @@
 		if ( csrMatrixA.constructor != csr_matrix || csrMatrixB.constructor != csr_matrix )
 			throw new Error("csrMatrixA and csrMatrixB have to be csr_matrix objects.");
 
-		return jsonToCsr(
+		return json_to_csr(
 						matrix_util_accel_json.csr_json_product(
 							csr_to_json(csrMatrixA),
 							csr_to_json(csrMatrixB)
@@ -64,7 +64,7 @@
 	matrix_util_accel.dense_product = function (denseMatrixA, denseMatrixB) {
 		
 		return (json_to_csr(
-						matrix_util_accel_json.csr_json_matrix_product(
+						matrix_util_accel_json.csr_json_product(
 							csr_to_json(new csr_matrix_from_dense(denseMatrixA)),
 							csr_to_json(new csr_matrix_from_dense(denseMatrixB))
 							)
@@ -84,7 +84,7 @@
 	 */
 	matrix_util_accel.coo_json_to_csr = function (cooJson) {
 
-		return new csr_from_json(matrix_util_accel_json.coo_json_to_csr_json(cooJson));
+		return new csr_matrix_from_json(matrix_util_accel_json.coo_json_to_csr_json(cooJson));
 
 	};
 

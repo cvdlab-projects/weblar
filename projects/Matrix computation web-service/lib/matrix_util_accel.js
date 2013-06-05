@@ -34,6 +34,26 @@
 		return new csr_matrix_from_json(jsonMatrix);
 	};
 
+		/**
+	 * [cooToJson description]
+	 * @param  {[type]} csrMatrix [description]
+	 * @return {[type]}           [description]
+	 */
+	var coo_to_json = matrix_util_accel.coo_to_json = function (cooMatrix) {
+		if ( cooMatrix.constructor != coo_matrix )
+			throw new Error("The argument of this function has to be a coo object.");
+		return cooMatrix.toJSON();
+	};
+
+	/**
+	 * [jsonTocoo description]
+	 * @param  {[type]} jsonMatrix [description]
+	 * @return {[type]}            [description]
+	 */
+	var json_to_coo = matrix_util_accel.json_to_coo = function (jsonMatrix) {
+		return new coo_matrix_from_json(jsonMatrix);
+	};
+
 
 	/**
 	 * [csrMatrixProduct description]
@@ -50,6 +70,26 @@
 						matrix_util_accel_json.csr_json_product(
 							csr_to_json(csrMatrixA),
 							csr_to_json(csrMatrixB)
+							)
+						);
+
+	};
+
+    /**
+	 * [cooMatrixProduct description]
+	 * @param  {[type]} csrMatrixA [description]
+	 * @param  {[type]} csrMatrixB [description]
+	 * @return {[type]}            [description]
+	 */
+	matrix_util_accel.coo_product = function (cooMatrixA, cooMatrixB) {
+
+		if ( cooMatrixA.constructor != coo_matrix || cooMatrixB.constructor != coo_matrix )
+			throw new Error("cooMatrixA and cooMatrixB have to be coo_matrix objects.");
+
+		return json_to_coo(
+						matrix_util_accel_json.coo_json_product(
+							coo_to_json(cooMatrixA),
+							coo_to_json(cooMatrixB)
 							)
 						);
 

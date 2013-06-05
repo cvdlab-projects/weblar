@@ -18,7 +18,7 @@ var start = currentdate.getTime();
 
 log("Execute 10x10 matrix product using matrix_util_accel_json layer.");
 
-var matrixAB_json_10 = matrix_util_accel_json.csr_json_product(matrixA_csr_json_10,matrixB_csr_json_10);
+var matrixAB_csr_json_10 = matrix_util_accel_json.csr_json_product(matrixA_csr_json_10,matrixB_csr_json_10);
 
 currentdate = new Date();
 var end = currentdate.getTime();
@@ -30,7 +30,7 @@ start = currentdate.getTime();
 
 log("Execute 10x10 matrix product using matrix_util_accel layer.");
 
-var matrixAB_json_10 = matrix_util_accel.csr_product(matrixA_csr_10,matrixB_csr_10);
+var matrixAB_csr_10 = matrix_util_accel.csr_product(matrixA_csr_10,matrixB_csr_10);
 
 currentdate = new Date();
 end = currentdate.getTime();
@@ -44,7 +44,7 @@ start = currentdate.getTime();
 
 log("Execute 100x100 matrix product using matrix_util_accel_json layer.");
 
-var matrixAB_json_100 = matrix_util_accel_json.csr_json_product(matrixA_csr_json_100,matrixB_csr_json_100);
+var matrixAB_csr_json_100 = matrix_util_accel_json.csr_json_product(matrixA_csr_json_100,matrixB_csr_json_100);
 
 currentdate = new Date();
 end = currentdate.getTime();
@@ -56,7 +56,7 @@ start = currentdate.getTime();
 
 log("Execute 100x100 matrix product using matrix_util_accel layer.");
 
-var matrixAB_json_100 = matrix_util_accel.csr_product(matrixA_csr_100,matrixB_csr_100);
+var matrixAB_csr_100 = matrix_util_accel.csr_product(matrixA_csr_100,matrixB_csr_100);
 
 currentdate = new Date();
 end = currentdate.getTime();
@@ -70,7 +70,7 @@ start = currentdate.getTime();
 
 log("Execute 1000x1000 matrix product using matrix_util_accel_json layer.");
 
-var matrixAB_json_1000 = matrix_util_accel_json.csr_json_product(matrixA_csr_json_1000,matrixB_csr_json_1000);
+var matrixAB_csr_json_1000 = matrix_util_accel_json.csr_json_product(matrixA_csr_json_1000,matrixB_csr_json_1000);
 
 currentdate = new Date();
 end = currentdate.getTime();
@@ -82,7 +82,7 @@ start = currentdate.getTime();
 
 log("Execute 1000x1000 matrix product using matrix_util_accel layer.");
 
-var matrixAB_json_1000 = matrix_util_accel.csr_product(matrixA_csr_1000,matrixB_csr_1000);
+var matrixAB_csr_1000 = matrix_util_accel.csr_product(matrixA_csr_1000,matrixB_csr_1000);
 
 currentdate = new Date();
 end = currentdate.getTime();

@@ -43,7 +43,7 @@ var time = (end-start)/1000;
 log("Time taken for DENSE TO CSR (INSTANCE AND JSON) conversion (10x10,100x100,1000x1000): "+time+" second");
 log("-----------------------------");
 
-/*
+
 log("Create coo instances");
 
 currentdate = new Date();
@@ -73,4 +73,4 @@ time = (end-start)/1000;
 
 log("Time taken for DENSE TO COO (JSON) conversion (10x10,100x100,1000x1000): "+time+" second");
 log("-----------------------------");
-*/
+/**/

@@ -25,7 +25,11 @@ Aprire il file testModules.js e decommentare la riga
 e modificare il nome della directory che contiene i file delle proteine in formato .pdb. 
 Applicare lo stesso procedimento quando si vogliono caricare i monomeri ma decommentando la riga 
 
-  * importer.runImpoprt("directory_contenente_proteine_pdb", false, "monomers", frUtils.filterExtension(PDB_EXTENSION));
+  * importer.runImpoprt("directory_contenente_monomeri_pdb", false, "monomers", frUtils.filterExtension(PDB_EXTENSION));
+
+Dopo avere decommentato una di queste due righe, avviare l’importer. 
+Per far ciò, digitare da riga di comando: node testModule
+Adesso il database è popolato con le proteine.
 
 Avviare il servizio REST avviando server_express. Per far ciò digitare da riga di comando: node server_express. 
 A questo punto WebPDB è pronto a ricevere richieste.

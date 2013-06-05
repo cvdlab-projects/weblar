@@ -20,12 +20,12 @@ of the database.
 Populate the database with the .pdb proteins. To do this, go to folder importer of WebPDB. 
 Open file testModules.js and uncomment the following row: 
 
-  * importer.runImpoprt(�directory_with_pdb_proteins�, false, �proteins�, frUtils.filterExtension(PDB_EXTENSION));                                                                                                         
+  * importer.runImpoprt("directory_with_pdb_proteins", false, "proteins", frUtils.filterExtension(PDB_EXTENSION));                                                                                                         
 
 and change the directory with the directory that contains the .pdb proteins. 
 Apply the same procedure when you need to load the monomers. In this case, uncomment the following row 
 
-  * importer.runImpoprt(�directory_with_pdb_monomers�, false, �monomers�, frUtils.filterExtension(PDB_EXTENSION));
+  * importer.runImpoprt("directory_with_pdb_monomers", false, "monomers", frUtils.filterExtension(PDB_EXTENSION));
 
 After uncomment one of this two rows, run the importer. To do this, just type on command line: node testModule.
 Now the database is populated with the protiens.

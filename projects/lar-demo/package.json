@@ -1,0 +1,32 @@
+{
+  "author": {
+    "name": "cvdlab",
+    "email": "cvdlab@email.com",
+    "site": "https://github.com/cvdlab/"
+  },
+  "contributors": [ 
+    {
+      "name": "Enrico Marino",
+      "email": "enrico.marino@email.com",
+      "url": "http://onirame.no.de"
+    },
+    {
+      "name": "Federico Spini",
+      "email": "federico.spini@gmail.com",
+      "url": "http://spini.no.de"
+    }
+  ],
+  "name": "lar-demo",
+  "description": "Linear Algebra Representation demo",
+  "version": "0.0.5",
+  "homepage": "https://github.com/cvdlab/lar-demo",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cvdlab/lar-demo.git"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

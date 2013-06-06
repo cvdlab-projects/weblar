@@ -54,14 +54,21 @@ function larFacets(model, dim) {	// LA COPPIA SETUP-LARFACETS è STATA RIASSUNTA
 
 	var Md = lar.Model.prototype.getMdFromCells(V.length, all_cells);
 
+	var md_csr = csr_matrix_from_dense(Md)
+
 	var Md_trans = numeric.transpose(Md);	// Uso la libreria numeric.js
 
-	var A = numeric.dot(Md, Md_trans);		// Uso la libreria numeric.js
+	var md_csr_trans = csr_matrix_from_dense(Md_trans);
+    
+    
+	
+
+	var A = numeric.dot(Md, Md_trans);		// Uso la libreria numeric.js   //A=[[riga1][riga2]...]
 
 	var app = [];		// Variabile d'appoggio per prendere le coppie di righe d'interesse su cui poi fare l'AND bit a bit
-	for(var i = 0; i < A[0].length; i++) {
+	for(var i = 0; i < A[0].length; i++) { //
 		for(var j = 0; j < A.length; j++) {
-			if(A[i][j] >= dim && i < j)		// Il famoso GE, ossia greather equal della dimensione di input
+			if(A[i][j] >= dim && i < j)		
 				app.push([i,j]);
 		}
 	}

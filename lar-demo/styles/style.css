@@ -1,0 +1,31 @@
+body {
+  overflow: hidden;
+}
+
+#plasm {
+  width: 100%;
+  margin-top: 20px;
+  background-color: #efefef;
+}
+
+#div_plasm {
+  width: 100%;
+  min-width: 100px;
+  max-width: 800px;
+  height: 360px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#div_framerate {
+  position: absolute;
+  margin-top: -49px;
+  right: 0px;
+}
+
+#textarea_code {
+  width: 100%;
+  height: 150px;
+  font-family: "courier";
+  font-size: 15px;
+}

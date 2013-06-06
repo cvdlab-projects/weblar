@@ -696,7 +696,7 @@ if ( !Array.prototype.unique ) {
 			throw new Error("index "+ index +" is not valid.");
 		}
 
-		int i = 0;
+		var i = 0;
 		
 		while(index > this.rowptr[i]){
 			i++;

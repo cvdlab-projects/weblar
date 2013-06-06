@@ -42,7 +42,7 @@
 			throw new Error("Format not valid. Needs two COO Json rapresentations with sorted rows. Syntax" +
 				"{ \"row\": [...], \"col\": [...], \"val\": [...], \"rowcount\": numberOfRows, \"colcount\": numberOfcolunms }");
 
-		return csr_json_to_coo_json(csr_json_product(coo_json_to_csr_json(cooJsonMatrixA), coo_json_to_csr_json(cooJsonMatrixB)));
+		return matrix_util_accel_json.csr_json_to_coo_json(csr_json_product(coo_json_to_csr_json(cooJsonMatrixA), coo_json_to_csr_json(cooJsonMatrixB)));
 
 	};
 

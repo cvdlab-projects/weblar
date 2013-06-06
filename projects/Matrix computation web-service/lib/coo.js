@@ -111,7 +111,7 @@ if ( !Array.prototype.equalsV8 ) {
 			}
 		}
 
-		return coo_matrix({ "row" : [0,2,3,4], "col" : [0,2,1,0], "val" : [1,1,1,1], 
+		return new coo_matrix({ "row" : row, "col" : col, "val" : val, 
 				"rowcount" : objargs.flat_matrix.length / objargs.num_cols, "colcount" : objargs.num_cols , "nnz" : count });
 
 	}

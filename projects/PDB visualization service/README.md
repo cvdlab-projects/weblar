@@ -2,3 +2,5 @@
 ====================
 
  * Guida all'utilizzo di webmol-webpdb [link](Guida.md)
+ 
+ * Usersguide to webmol-webpdb (English version) [link](Usersguide.md)

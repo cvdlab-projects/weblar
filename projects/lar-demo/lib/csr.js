@@ -690,7 +690,25 @@ if ( !Array.prototype.unique ) {
 
 	};
 
+	csr_matrix.prototype.getRowIndex = function(index){
 
+		if (index > this.rowptr.length){
+			throw new Error("index "+ index +" is not valid.");
+		}
+
+		int i = 0;
+		
+		while(index > this.rowptr[i]){
+			i++;
+		}
+
+		return i;
+
+	};
+
+	csr_matrix.prototype.getColumnIndex = function(index){
+		return this.col[index];
+	};
 
 	exports.csr_matrix = csr_matrix;
 	exports.csr_matrix_from_json = csr_matrix_from_json;

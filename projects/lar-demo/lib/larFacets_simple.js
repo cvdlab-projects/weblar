@@ -40,7 +40,7 @@ lar.Model.prototype.getCellsFromMd = function (Md) {
 
 
 
-function larFacets(model, dim, bool) {	// LA COPPIA SETUP-LARFACETS è STATA RIASSUNTA TUTTA QUì
+function larFacets_simple(model, dim, bool) {	// LA COPPIA SETUP-LARFACETS è STATA RIASSUNTA TUTTA QUì
 	/* In questa versione stiamo assumendo che le celle del modello di input siano proprio la matrice Md,
 	quindi contangano sia le celle del modello che le celle esterne al modello */
 
@@ -54,7 +54,8 @@ function larFacets(model, dim, bool) {	// LA COPPIA SETUP-LARFACETS è STATA RIA
 
 	var Md_trans = numeric.transpose(Md);	// Uso la libreria numeric.js
 
-	var A = numeric.dot(Md, Md_trans);		// Uso la libreria numeric.js
+	//var A = numeric.dot(Md, Md_trans);		// Uso la libreria numeric.js
+	var A = matrix_util_accel.dense_product(Md, Md_trans);
 
 	var app = [];		// Variabile d'appoggio per prendere le coppie di righe d'interesse su cui poi fare l'AND bit a bit
 	for(var i = 0; i < A[0].length; i++) {

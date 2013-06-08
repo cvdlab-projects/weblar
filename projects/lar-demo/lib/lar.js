@@ -870,4 +870,59 @@
     return new Model(vertices, this.cells);
   };
 
+
+/**
+ * getMdFromCells
+ * Return adjacency matrix starting from cell's array 
+ *
+ * @param {Array} cells of the model
+ * @param {Number} number of the model's vertices
+ * return {Array} (m x n) matrix
+ **/
+
+lar.Model.prototype.getMdFromCells = function (numVerts, cells) {
+  /*var vertices = model.vertices;
+  var cells = model.cells;*/
+  var matrix = lar.utils.zeros(cells.length, /*vertices.length*/ numVerts);
+  
+  for (var i = 0, l = matrix.length; i<l; i++){
+    for (var j = 0; j<cells[i].length; j++){
+      matrix[i][cells[i][j]]=1;
+      
+    }
+  }
+  return matrix;
+}
+
+/**
+ * getCellsFromMd
+ * Return cell's array starting from adjacency matrix   
+ *
+ * @param {Array} (m x n)matrix
+ * return {Array} cells of the model
+ **/
+
+lar.Model.prototype.getCellsFromMd = function (Md) {
+  var new_cells = []; // Rappresentazione "LAR by Spini-Marino" delle celle, 0 = Punto1, 1 = Punto2, 2 = Punto3...
+
+  for (var n = 0; n < Md.length; n++) {
+
+    var b_cell = Md[n];
+    var new_cell = [];
+
+    for (var p = 0; p < b_cell.length; p++) {
+
+      var point = b_cell[p];
+
+      if(point === 1)
+        new_cell.push(p);
+    }
+
+    new_cells.push(new_cell);
+  }
+  return new_cells;
+}
+
+
+
  }(this));

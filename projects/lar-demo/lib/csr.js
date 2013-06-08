@@ -692,13 +692,13 @@ if ( !Array.prototype.unique ) {
 
 	csr_matrix.prototype.getRowIndex = function(index){
 
-		if (index > this.rowptr.length){
+		if (index >= this.data.length){
 			throw new Error("index "+ index +" is not valid.");
 		}
 
 		var i = 0;
 		
-		while(index > this.rowptr[i]){
+		while(index > this.rowptr[i] && index >= this.rowptr[i+1]){
 			i++;
 		}
 
@@ -708,6 +708,16 @@ if ( !Array.prototype.unique ) {
 
 	csr_matrix.prototype.getColumnIndex = function(index){
 		return this.col[index];
+	};
+
+	csr_matrix.prototype.getRowDense = function(index) {
+		
+		var columnAdd = newFilledArray(this.getColCount(), 0);
+			for(var k = this.getRowPointer()[index]; k < this.getRowPointer()[index+1]; k++ ) {
+				columnAdd[ this.getColumnIndices()[k] ] = this.getData()[k];
+			}
+		
+		return columnAdd;
 	};
 
 	exports.csr_matrix = csr_matrix;

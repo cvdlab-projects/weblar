@@ -9,12 +9,18 @@
 
 function larFacets_simple(model, dim, bool) {	
 
-	var V = model[0];		
+			
 
-	if(!bool)
+	if(!bool){
+		var V = model[0];
 		var Md = model[1];	// input = Md
-	else
-		var Md = lar.Model.prototype.getMdFromCells(V.length, model[1]);	// input = celle
+	}
+		
+	else{
+		var V = model.vertices;
+		var Md = model.getMdFromCells();
+	}
+			// input = celle
 
 	var csr_Md = csr_matrix_from_dense(Md);
 

@@ -880,10 +880,10 @@
  * return {Array} (m x n) matrix
  **/
 
-lar.Model.prototype.getMdFromCells = function (numVerts, cells) {
-  /*var vertices = model.vertices;
-  var cells = model.cells;*/
-  var matrix = lar.utils.zeros(cells.length, /*vertices.length*/ numVerts);
+lar.Model.prototype.getMdFromCells = function () {
+  var vertices = this.vertices;
+  var cells = this.cells;
+  var matrix = lar.utils.zeros(cells.length,vertices.length);
   
   for (var i = 0, l = matrix.length; i<l; i++){
     for (var j = 0; j<cells[i].length; j++){

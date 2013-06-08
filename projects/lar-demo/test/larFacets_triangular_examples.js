@@ -21,9 +21,8 @@ var m = larFacets_simple(model, 2, true);
 m.draw();
 
 // ESEMPIO RICHIESTO DAL PROF 
-var model = new lar.Model([[0,6],[0,0],[3,0],[6,0],[0,3],[3,3],[6,3],[6,6],[3,6]], [[5,6,7,8],[0,5,8],[0,4,5],[1,2,4,5],[2,3,5,6],[0,8,7],[3,6,7],[1,2,3],[0,1,4],[0,6,7],[3,8,7]]);
+var model = new lar.Model([[0,6],[0,0],[3,0],[6,0],[0,3],[3,3],[6,3],[6,6],[3,6]], [[5,6,7,8],[0,5,8],[0,4,5],[1,2,4,5],[2,3,5,6],[0,8,7],[3,6,7],[1,2,3],[0,1,4]]);
 var m = larFacets_simple(model, 2,true);
-//le celle risultanti sono esatte e presenti nel modello in output ma facendo il draw non ne disegna 2...perchè????
 
 
 

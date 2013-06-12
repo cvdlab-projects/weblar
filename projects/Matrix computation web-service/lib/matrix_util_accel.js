@@ -1,4 +1,4 @@
-/**!
+/**
 * matrix_util_accel.js
 *
 * @author Luca Menichetti and Fabrizio Rebecca

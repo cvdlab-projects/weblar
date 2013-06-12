@@ -7,7 +7,7 @@
    * @param {Number} dim of the model
    */
    
-function larFacets(model, dim) {	
+function larFacets(model, dim, bool) {	
 
 	var V = model.vertices;
 
@@ -20,15 +20,17 @@ function larFacets(model, dim) {
 	for (var i = 0; i < ext_cells.length; i++)
 		all_cells.push(ext_cells[i]);
 
-	var Md = lar.Model.prototype.getMdFromCells(V.length, all_cells);
+	var Md = model.getMdFromCells();
 
 	var csr_Md = csr_matrix_from_dense(Md);
 
 	var csr_Md_trans = csr_Md.transpose();
 
-    //var product = matrix_util_accel.csr_product(Md, Md_trans);
+    if(!bool){
+    	var product = matrix_util_accel.csr_product(csr_Md, csr_Md_trans);
+	}
 
-	var product = csr_Md.multiply(csr_Md_trans);
+	else var product = csr_Md.multiply(csr_Md_trans);
 
 	var new_cells_binary = [];
 

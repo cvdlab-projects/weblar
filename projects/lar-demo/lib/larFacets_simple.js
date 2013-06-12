@@ -26,7 +26,7 @@ function larFacets_simple(model, dim, bool, bool2) {
 
 	var csr_Md_trans = csr_Md.transpose();
 
-	if(bool2){
+	if(!bool2){
     	var product = matrix_util_accel.csr_product(csr_Md, csr_Md_trans);
 	}
 

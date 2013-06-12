@@ -17,9 +17,9 @@ git clone git@github.com:cvdlab/lar-demo.git
 * @return {lar.Model} the lar model resulting from the lar product.
 
 **HOWTO test larProduct:**
-* 1) Open index.html in "lar-demo" folder.
-* 2) Copy one of the available examples in "lar-demo/test/larProduct_examples.js" in the javascript console.
-* 3) Enjoy :)
+* Open index.html in "lar-demo" folder.
+* Copy one of the available examples in "lar-demo/test/larProduct_examples.js" in the javascript console.
+* Enjoy :)
 
 **larFacets_simple: this stable version allows us to extract facets from a lar model. The input model has to be provided also with external cells.**
 * @param {lar.Model} a lar model with vertices and cells
@@ -28,20 +28,21 @@ git clone git@github.com:cvdlab/lar-demo.git
 * @return {lar.Model} the lar model with all the dim-1 cells
 
 **HOWTO test larFacets_simple:**
-* 1) Open index.html in "lar-demo" folder.
-* 2) Copy one of the available examples in "lar-demo/test/larFacets_triangular_examples.js" or in "lar-demo/test/larFacets_squared_examples.js" in the javascript console.
-* 3) Enjoy :)
+* Open index.html in "lar-demo" folder.
+* Copy one of the available examples in "lar-demo/test/larFacets_triangular_examples.js" or in "lar-demo/test/larFacets_squared_examples.js" in the javascript console.
+* Enjoy :)
 
 **larFacets: this version allows us to extract facets from a lar model. The input model hasn't to be provided with external cells but the external space is retrieved trough the boundary function.**
+
 **CAVEAT:** currently the boundary function works only on simplexes, so larFacets too. 
 * @param {lar.Model} a lar model with vertices and cells
 * @param {Number} dim is the dimension of the lar model
 * @return {lar.Model} the lar model with all the dim-1 cells
 
 **HOWTO test larFacets:**
-* 1) Open index.html in "lar-demo" folder.
-* 2) Copy one of the available examples in "lar-demo/test/larFacets_advanced_examples.js" in the javascript console.
-* 3) Enjoy :)
+* Open index.html in "lar-demo" folder.
+* Copy one of the available examples in "lar-demo/test/larFacets_advanced_examples.js" in the javascript console.
+* Enjoy :)
 
 
 

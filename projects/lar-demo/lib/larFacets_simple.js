@@ -7,7 +7,7 @@
    * @return {Boolean} true if model[1] is cell's array, false if it's Md matrix
    */
 
-function larFacets_simple(model, dim, bool) {	
+function larFacets_simple(model, dim, bool, bool2) {	
 
 			
 
@@ -26,9 +26,11 @@ function larFacets_simple(model, dim, bool) {
 
 	var csr_Md_trans = csr_Md.transpose();
 
-    //var product = matrix_util_accel.csr_product(Md, Md_trans);
+	if(bool2){
+    	var product = matrix_util_accel.csr_product(csr_Md, csr_Md_trans);
+	}
 
-	var product = csr_Md.multiply(csr_Md_trans);
+	else var product = csr_Md.multiply(csr_Md_trans);
 
 	var new_cells_binary = [];
 

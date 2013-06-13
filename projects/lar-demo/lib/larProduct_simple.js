@@ -1,3 +1,14 @@
+/**!
+* larProduct_simple.js
+* does the cartesian product between two LAR models
+*
+* @author Fabio Cumbo, Elisa Lamberti and Andrea Somma
+* @copyright 2013 Fabio Cumbo, Elisa Lamberti and Andrea Somma
+*
+* @param {lar.Model} lar model #1 with vertices and cells
+* @param {lar.Model} lar model #2 with vertices and cells
+*/
+
 /*
  * models have to be an arry with two model objects;
  * vertices and cells are properties of the model object (ie a simplicial complex)

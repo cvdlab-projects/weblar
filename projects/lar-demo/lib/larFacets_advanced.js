@@ -3,11 +3,14 @@
    * extracts facets from a model
    * in this version larFacets partitions external space with the help of boundary function
    *
+   * @author Fabio Cumbo, Elisa Lamberti and Andrea Somma
+   * @copyright 2013 Fabio Cumbo, Elisa Lamberti and Andrea Somma
+   *
    * @param {lar.Model} lar model with vertices and cells
    * @param {Number} dim of the model
    */
    
-function larFacets(model, dim, bool) {	
+function larFacets(model, dim) {	
 
 	var V = model.vertices;
 
@@ -26,11 +29,10 @@ function larFacets(model, dim, bool) {
 
 	var csr_Md_trans = csr_Md.transpose();
 
-    if(!bool){
-    	var product = matrix_util_accel.csr_product(csr_Md, csr_Md_trans);
-	}
-
-	else var product = csr_Md.multiply(csr_Md_trans);
+   	var product = matrix_util_accel.csr_product(csr_Md, csr_Md_trans);
+   	
+   	// Uncomment this line and comment the line above if the "Matrix computation web-service" is offline
+	//var product = csr_Md.multiply(csr_Md_trans);
 
 	var new_cells_binary = [];
 

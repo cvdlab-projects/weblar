@@ -2,12 +2,15 @@
    * larFacets_simple
    * extracts facets from a model
    *
+   * @author Fabio Cumbo, Elisa Lamberti and Andrea Somma
+   * @copyright 2013 Fabio Cumbo, Elisa Lamberti and Andrea Somma
+   *
    * @param {lar.Model} lar model with vertices and cells
    * @param {Number} dim of the model
-   * @return {Boolean} true if model[1] is cell's array, false if it's Md matrix
+   * @return {Boolean} true if first param is a lar model, false if it's an array containing vertices and Md matrix
    */
 
-function larFacets_simple(model, dim, bool, bool2) {	
+function larFacets_simple(model, dim, bool) {	
 
 			
 
@@ -20,17 +23,15 @@ function larFacets_simple(model, dim, bool, bool2) {
 		var V = model.vertices;
 		var Md = model.getMdFromCells();
 	}
-			// input = celle
 
 	var csr_Md = csr_matrix_from_dense(Md);
 
 	var csr_Md_trans = csr_Md.transpose();
 
-	if(!bool2){
-    	var product = matrix_util_accel.csr_product(csr_Md, csr_Md_trans);
-	}
+    var product = matrix_util_accel.csr_product(csr_Md, csr_Md_trans);
 
-	else var product = csr_Md.multiply(csr_Md_trans);
+    // Uncomment this line and comment the line above if the "Matrix computation web-service" is offline
+	//var product = csr_Md.multiply(csr_Md_trans);
 
 	var new_cells_binary = [];
 

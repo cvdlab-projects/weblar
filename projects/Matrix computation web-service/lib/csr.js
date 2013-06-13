@@ -8,7 +8,6 @@
 * @licence MIT
 */
 
-
 /**
  * Array prototype definitions
  */
@@ -138,7 +137,7 @@ if ( !Array.prototype.unique ) {
     /**
      * Return a csr_matrix reference from a flat representation given in a JSON format.
      * @param  {Array of Array} objargs An Array of Array containing the dense matrix
-     * @return {csr_matrix} An csr_matrix object.
+     * @return {csr_matrix}
      */
     function csr_matrix_from_dense(denseMatrix) {
         
@@ -409,6 +408,7 @@ if ( !Array.prototype.unique ) {
      */
     csr_matrix.prototype.toDense = function() {
         var rowArray = new Array(this.getRowCount());
+
         for(var i = 0; i < (this.getRowPointer().length - 1); i++) {
             var columnAdd = newFilledArray(this.getColCount(), 0);
             for(var k = this.getRowPointer()[i]; k < this.getRowPointer()[i+1]; k++ ) {
@@ -426,6 +426,7 @@ if ( !Array.prototype.unique ) {
      * @return {boolean}      
      */
     csr_matrix.prototype.equals = function(other) {
+
         if ((other instanceof csr_matrix) === false) {
             return false;
         }
@@ -455,7 +456,7 @@ if ( !Array.prototype.unique ) {
     };
 
     /**
-     * Print a string representazion of a csr.
+     * Print a string representazion of the current csr.
      * @return {String}
      */
     csr_matrix.prototype.toString = function() {
@@ -468,7 +469,7 @@ if ( !Array.prototype.unique ) {
     };
 
     /**
-     * Print the JSON of the CSR matrix
+     * Print the JSON of the current CSR matrix
      * @return {JSON}
      */
     csr_matrix.prototype.toJSON = function() {
@@ -480,8 +481,8 @@ if ( !Array.prototype.unique ) {
     };
 
     /**
-     * Ritorna una matrice convertita in COO, istanza di coo_matrix
-     * @return {coo_matrix}
+     * Returns a matrix converted in COO, representing in JSON
+     * @return {JSON}
      */
     csr_matrix.prototype.toCooJSON = function() {
 

@@ -20,9 +20,9 @@
 
 | Assigned to       | Tasks         | Notes       |
 | ------------- |-------------  | ----------- |
-| Andrea Somma  |  1             | ---            |
-| Elisa Lamberti|  2             | ---            |
-| Fabio Cumbo   |  2             | ---            |
+| Andrea Somma  |  1,2           | ---            |
+| Elisa Lamberti|  1,2           | ---            |
+| Fabio Cumbo   |  1,2           | ---            |
 
 
 ## Second Project [link](Matrix computation web-service/)

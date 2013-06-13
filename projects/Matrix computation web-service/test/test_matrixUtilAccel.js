@@ -79,7 +79,7 @@ log("Test: example of a COO to CSR convertion starting from a JSON COO represent
 
 var cooJsonMatrix = {"row":[0,0,1,3],"col":[0,2,1,3],"val":[4,9,7,5],"rowcount":4,"colcount":4};
 
-var csrConvertedMatrix = matrix_util_accel.coo_json_to_csr(cooJsonMatrix);
+var csrConvertedMatrix = matrix_util_accel_json.coo_json_to_csr(cooJsonMatrix);
 
 
 // testing function : csrJsonMatrixProduct(jsonA,jsonB)

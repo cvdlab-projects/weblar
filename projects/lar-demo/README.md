@@ -21,7 +21,7 @@ git clone git@github.com:cvdlab-bio/weblar.git
 * Copy one of the available examples in "lar-demo/test/larProduct_examples.js" in the javascript console.
 * Enjoy :)
 
-**larFacets_simple:** this stable version allows us to extract facets from a lar model. The input model has to be provided also with external cells.
+**larFacets_simple:** this stable version allows us to extract facets from a lar model. The input model has to be provided also with external cells. This version also works on **Convex Cells**.
 * @param {lar.Model} a lar model with vertices and cells
 * @param {Number} dim is the dimension of the lar model
 * @param {Boolean} true if the first argument is the lar model as described above, false if it's an array containing vertices and the Md matrix (with the external cells too).
@@ -32,7 +32,7 @@ git clone git@github.com:cvdlab-bio/weblar.git
 * Copy one of the available examples in "lar-demo/test/larFacets_triangular_examples.js" or in "lar-demo/test/larFacets_squared_examples.js" in the javascript console.
 * Enjoy :)
 
-**larFacets:** this version allows us to extract facets from a lar model. The input model hasn't to be provided with external cells but the external space is retrieved trough the boundary function.
+**larFacets:** this version allows us to extract facets from a lar model. The input model hasn't to be provided with external cells but the external space is retrieved through the boundary function.
 
 **CAVEAT:** currently the boundary function works only on simplexes, so larFacets too. 
 * @param {lar.Model} a lar model with vertices and cells

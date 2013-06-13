@@ -2,9 +2,12 @@
    * larFacets_simple
    * extracts facets from a model
    *
+   * @author Fabio Cumbo, Elisa Lamberti and Andrea Somma
+   * @copyright 2013 Fabio Cumbo, Elisa Lamberti and Andrea Somma
+   *
    * @param {lar.Model} lar model with vertices and cells
    * @param {Number} dim of the model
-   * @return {Boolean} true if model[1] is cell's array, false if it's Md matrix
+   * @return {Boolean} true if first param is a lar model, false if it's an array containing vertices and Md matrix
    */
 
 function larFacets_simple(model, dim, bool, bool2) {	

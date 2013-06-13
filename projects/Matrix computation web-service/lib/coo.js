@@ -2,6 +2,7 @@
 * coo.js
 *
 * @description Library that offers a class to represent and manipulate a sparse matrix in COO. 
+* 
 * @author Luca Menichetti and Fabrizio Rebecca
 * @copyright 2013 Luca Menichetti and Fabrizio Rebecca
 * @licence MIT

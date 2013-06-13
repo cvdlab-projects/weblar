@@ -1,14 +1,14 @@
-# LAR demo extended with convex cells and matrix computation web service
+# LAR demo extended with new functions and matrix computation web service
 
 [Linear Algebraic Representation demo](http://cvdlab.github.com/lar-demo)
 
 ## Installation
 
 ```
-git clone git@github.com:cvdlab/lar-demo.git
+git clone git@github.com:cvdlab-bio/weblar.git
 ```
 
-## Documentation
+## New functions' documentation
 
 **larProduct:** this function provides the cartesian product between two lar models.
 

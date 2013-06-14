@@ -37,8 +37,8 @@ if ( !Array.prototype.equalsV8 ) {
         this.row = objargs.row || undefined;
         this.col = objargs.col || undefined;
         this.val = objargs.val || undefined;
-        this.rowcount = objargs.colcount || undefined;
-        this.colcount = objargs.rowcount || undefined;
+        this.rowcount = objargs.rowcount || undefined;
+        this.colcount = objargs.colcount || undefined;
         this.nnz = objargs.rowcount.nnz || this.val.length || undefined;
     }
     

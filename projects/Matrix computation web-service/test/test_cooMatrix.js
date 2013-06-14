@@ -76,7 +76,7 @@ log("JSON.stringify() : " + JSON.stringify(coo_json));
 
 var matrixFromJson = new coo_matrix_from_json(coo_json);
 
-log("The csr matrix is created and this is its toString() value:");
+log("The coo matrix is created and this is its toString() value:");
 print(matrixFromJson.toString());
 
 log("Check if the matrix is equal to the matrix of the first test (true expected): " + matrixFromJson.equals(matrix));
@@ -84,14 +84,34 @@ log("Check if the matrix is equal to the matrix of the first test (true expected
 log("Print the dense matrix:");
 print(matrixFromJson.toDense());
 
+log("-----------------------------");
+
 /*
 
 	third test
 
-	Create a csr matrix starting from a dense representation
+	Create a coo matrix starting from a dense representation
 
-	[[1, 0, 1],
-	 [0, 1, 0],
-	 [1, 0, 0]]
+	[[1, 0, 1, 0],
+	 [0, 2, 0, 1],
+	 [1, 3, 6, 0]]
 
 */
+
+log("Testing how to create a matrix from a dense representation.");
+
+var dense_matrix = [[1, 0, 1, 0], [0, 2, 0, 1], [1, 3, 6, 0]];
+
+log("Create the following dense matrix:");
+print(dense_matrix);
+
+var matrix_from_dense = new coo_matrix_from_dense(dense_matrix);
+
+log("The coo matrix is created and this is its toString() value:");
+print(matrix_from_dense.toString());
+
+log("Check if the matrix is equal to the matrix of the first test (true expected): " + matrix_from_dense.equals(matrix));
+
+log("This is his JSON : " + JSON.stringify(matrix_from_dense.toJSON()));
+
+log("-----------------------------");

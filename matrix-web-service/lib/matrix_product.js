@@ -10,7 +10,7 @@
     
     var mrp = exports.matrix_remote_product = {};
 
-    mrp.url = "http://cvd01.dia.uniroma3.it:3000/service/test/multiply";
+    mrp.url = "http://webpdb.dia.uniroma3.it/service/test/multiply";
 
     /**
      * Test if the json pattern used for the remote matrix product is correct

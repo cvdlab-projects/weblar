@@ -13,6 +13,13 @@ log("====================================");
 log("You are executing performance_1000.js");
 log("====================================");
 
+//conversion
+var matrixA_csr_1000 = new csr_matrix_from_dense(matrix_a_1000);
+var matrixB_csr_1000 = new csr_matrix_from_dense(matrix_b_1000);
+
+var matrixA_coo_1000 = new coo_matrix_from_dense(matrix_a_1000);
+var matrixB_coo_1000 = new coo_matrix_from_dense(matrix_b_1000);
+
 var currentdate = new Date();
 var start = currentdate.getTime();
 

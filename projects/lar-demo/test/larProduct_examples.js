@@ -1,4 +1,12 @@
-// ESEMPIO 1: DUE VETTTORI, IL CUI PRODOTTO è UN QUADRATO
+/**
+* larProduct tests
+*
+* @author Fabio Cumbo, Elisa Lamberti and Andrea Somma
+* @copyright 2013 Fabio Cumbo, Elisa Lamberti and Andrea Somma
+*
+*/
+
+// ESEMPIO 1: DUE VETTORI, IL CUI PRODOTTO è UN QUADRATO
 
 v1 = [[0.0, 0.0], [1.0, 0.0]]
 c1 = [[0, 1]];

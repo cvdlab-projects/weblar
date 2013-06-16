@@ -1,3 +1,11 @@
+/**
+* boundary tests
+*
+* @author Fabio Cumbo, Elisa Lamberti and Andrea Somma
+* @copyright 2013 Fabio Cumbo, Elisa Lamberti and Andrea Somma
+*
+*/
+
 //due quadrati con celle triangolari
 var m = new lar.Model([[0,0],[1,0],[2,0],[0,1],[1,1],[2,1]],[[0,1,3],[1,3,4],[1,4,5],[1,2,5]]);
 var b = m.boundary(2, [ [0,1,3],[1,3,4],[1,4,5],[1,2,5] ], false);

@@ -1,3 +1,11 @@
+/**
+* larFacets tests
+*
+* @author Fabio Cumbo, Elisa Lamberti and Andrea Somma
+* @copyright 2013 Fabio Cumbo, Elisa Lamberti and Andrea Somma
+*
+*/
+
 // ESEMPIO: I DUE TRIANGOLI
 var m = new lar.Model([ [0,0,0],[2,0,0],[2,2,0],[0,2,0] ], [ [0,1,3],[1,2,3] ]);
 var f = larFacets(m, 2);

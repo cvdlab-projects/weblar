@@ -1,3 +1,11 @@
+/**
+* larFacets_simple convex cells' tests
+*
+* @author Fabio Cumbo, Elisa Lamberti and Andrea Somma
+* @copyright 2013 Fabio Cumbo, Elisa Lamberti and Andrea Somma
+*
+*/
+
 // ESEMPIO: DUE QUADRATI (input = Md)
 var m = larFacets_simple([ [ [0,0,0],[0,1,0],[1,1,0],[1,0,0],[2,1,0],[2,0,0] ], 
 	[ [1,1,1,1,0,0],[0,0,1,1,1,1],[1,1,0,0,0,0],[0,1,1,0,0,0],[0,0,1,0,1,0],[0,0,0,0,1,1],[0,0,0,1,0,1],[1,0,0,1,0,0] ] ], 2, false);

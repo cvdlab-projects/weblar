@@ -1,14 +1,14 @@
 /**
-   * larFacets v2
-   * extracts facets from a model
-   * in this version larFacets partitions external space with the help of boundary function
-   *
-   * @author Fabio Cumbo, Elisa Lamberti and Andrea Somma
-   * @copyright 2013 Fabio Cumbo, Elisa Lamberti and Andrea Somma
-   *
-   * @param {lar.Model} lar model with vertices and cells
-   * @param {Number} dim of the model
-   */
+* larFacets v2
+* extracts facets from a model
+* in this version larFacets partitions external space with the help of boundary function
+*
+* @author Fabio Cumbo, Elisa Lamberti and Andrea Somma
+* @copyright 2013 Fabio Cumbo, Elisa Lamberti and Andrea Somma
+*
+* @param {lar.Model} lar model with vertices and cells
+* @param {Number} dim of the model
+*/
    
 function larFacets(model, dim) {	
 

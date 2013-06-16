@@ -1,3 +1,11 @@
+/**
+* larProduct & larFacets demo
+*
+* @author Fabio Cumbo, Elisa Lamberti and Andrea Somma
+* @copyright 2013 Fabio Cumbo, Elisa Lamberti and Andrea Somma
+*
+*/
+
 //STEP 00
 step(function () {
 
@@ -14,7 +22,7 @@ m2 = new lar.Model(v2, c2);
 //STEP 01
 step(function () {
 
-// ESEMPIO 1: DUE VETTTORI, IL CUI PRODOTTO è UN QUADRATO
+// ESEMPIO 1: DUE VETTORI, IL CUI PRODOTTO è UN QUADRATO
 m3 = larProduct(m1, m2);
 m3.draw();
 

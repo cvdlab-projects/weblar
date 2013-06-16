@@ -1,3 +1,11 @@
+/**
+* larFacets_simple simplexes tests
+*
+* @author Fabio Cumbo, Elisa Lamberti and Andrea Somma
+* @copyright 2013 Fabio Cumbo, Elisa Lamberti and Andrea Somma
+*
+*/
+
 // ESEMPIO DI USO BASE: UN TRIANGOLO (input = Md)
 var m = larFacets_simple([ [ [1,0,0],[0,1,0],[0,0,0] ], [ [1,1,1],[1,1,0],[0,1,1],[1,0,1] ] ], 2, false);
 m.draw();

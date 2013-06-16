@@ -1,3 +1,11 @@
+/**
+* simplexFractal tests
+*
+* @author Fabio Cumbo, Elisa Lamberti and Andrea Somma
+* @copyright 2013 Fabio Cumbo, Elisa Lamberti and Andrea Somma
+*
+*/
+
 //ESEMPIO: SIMPLESSOFRATTALE 2D
 
 var fSimplex2D = fractalSimplex(2,3,5)

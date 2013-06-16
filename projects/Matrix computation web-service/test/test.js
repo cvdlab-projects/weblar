@@ -23,6 +23,7 @@ var print = function(string){
 
 log("====================================");
 log("You are executing test.js");
+log("====================================");
 
 // do some quick test here
 

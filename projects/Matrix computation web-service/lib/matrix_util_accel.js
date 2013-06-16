@@ -12,7 +12,7 @@
 
     /**
      * Convert from a CSR instance to JSON
-     * @param  {csr} csrMatrix
+     * @param  {csr_matrix} csrMatrix
      * @return {JSON}
      */
     var csr_to_json = matrix_util_accel.csr_to_json = function (csrMatrix) {
@@ -24,7 +24,7 @@
     /**
      * Convert from a JSON to a CSR instance
      * @param  {JSON} jsonMatrix
-     * @return {csr}
+     * @return {csr_matrix}
      */
     var json_to_csr = matrix_util_accel.json_to_csr = function (jsonMatrix) {
         return new csr_matrix_from_json(jsonMatrix);
@@ -32,7 +32,7 @@
 
     /**
      * Convert from a COO instance to JSON
-     * @param  {coo} cooMatrix
+     * @param  {coo_matrix} cooMatrix
      * @return {JSON}          
      */
     var coo_to_json = matrix_util_accel.coo_to_json = function (cooMatrix) {
@@ -44,7 +44,7 @@
     /**
      * Convert from a JSON to a COO instance
      * @param  {JSON} jsonMatrix
-     * @return {coo}
+     * @return {coo_matrix}
      */
     var json_to_coo = matrix_util_accel.json_to_coo = function (jsonMatrix) {
         return new coo_matrix_from_json(jsonMatrix);
@@ -54,9 +54,9 @@
     /**
      * Send a request for an accelerated matrix product for the web service.
      * Starting from two instances of CSR matrices returns their product.
-     * @param  {csr} csrMatrixA
-     * @param  {csr} csrMatrixB
-     * @return {csr}           
+     * @param  {csr_matrix} csrMatrixA
+     * @param  {csr_matrix} csrMatrixB
+     * @return {csr_matrix}           
      */
     matrix_util_accel.csr_product = function (csrMatrixA, csrMatrixB) {
         if ( csrMatrixA.constructor != csr_matrix || csrMatrixB.constructor != csr_matrix )
@@ -72,9 +72,9 @@
     /**
      * Send a request for an accelerated matrix product for the web service.
      * Starting from two instances of COO matrices returns their product.
-     * @param  {coo} cooMatrixA
-     * @param  {coo} cooMatrixB
-     * @return {coo} 
+     * @param  {coo_matrix} cooMatrixA
+     * @param  {coo_matrix} cooMatrixB
+     * @return {coo_matrix} 
      */
     matrix_util_accel.coo_product = function (cooMatrixA, cooMatrixB) {
         if ( cooMatrixA.constructor != coo_matrix || cooMatrixB.constructor != coo_matrix )

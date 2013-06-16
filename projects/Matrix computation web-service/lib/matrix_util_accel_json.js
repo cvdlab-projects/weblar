@@ -80,7 +80,7 @@
     /**
      * Converts a COO JSON matrix in a CSR JSON matrix, and return an object instance of CSR.
      * @param  {JSON} cooJson
-     * @return {csr}
+     * @return {csr_matrix}
      */
     matrix_util_accel_json.coo_json_to_csr = function (cooJson) {
         return new csr_matrix_from_json(coo_json_to_csr_json(cooJson));

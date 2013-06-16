@@ -12,7 +12,7 @@
 log("====================================");
 log("You are executing test_csrMatrix.js");
 log("====================================");
-
+log("");
 log("Test: how to use csr matrix library.");
 
 

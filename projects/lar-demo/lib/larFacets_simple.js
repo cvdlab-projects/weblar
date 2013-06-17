@@ -65,3 +65,106 @@ function larFacets_simple(model, dim, bool) {
 	return (new lar.Model(V, new_cells)); 
 }
 
+
+/*
+ * a function to get the facets from a cube
+ *
+ */
+function getFaces(vertices, cell) {
+	var p0 = vertices[cell[0]];
+
+	var f1 = [cell[0]];
+	var f2 = [];
+	var f3 = [cell[0]];
+	var f4 = [];
+	var f5 = [cell[0]];
+	var f6 = [];
+
+	for(var i=1; i<cell.length; i++) {
+		var p = vertices[cell[i]];
+		if (p[0] === p0[0])
+			f1.push(cell[i]);
+		else f2.push(cell[i]);
+		if (p[1] === p0[1])
+			f3.push(cell[i]);
+		else f4.push(cell[i]);
+		if (p[2] === p0[2])
+			f5.push(cell[i]);
+		else f6.push(cell[i]);	
+	}
+	return [f1,f2,f3,f4,f5,f6];
+}
+
+/*
+ * a function to get the external facets from a model composed by cubes
+ *
+ */
+function getExtFaces(model) {
+	var v = model.vertices;
+	var c = model.cells;
+
+	var faces = [];
+
+	for (var cell = 0; cell < c.length; cell++) {
+		var tempFaces = getFaces(v,c[cell]);
+		for (var f = 0; f < tempFaces.length; f++) {
+			faces.push(tempFaces[f]);
+		}
+
+	}
+	faces = updateFaces(faces);
+	return faces;
+}
+
+/*
+ * a function to compare the equality of two arrays
+ *
+ */
+function compareArrays (array1, array2){
+	var equal = true;
+	if (array1.length!=array2.length){
+		equal = false;
+		return equal;
+	}
+	else{
+		for (var i = 0; i<array1.length; i++){
+			if (array1[i]!=array2[i]){
+				equal = false;
+				return equal;
+			}
+		}
+		return equal;
+	}
+}
+
+/*
+ * a function to eliminate the internal facets from a model composed by cubes
+ *
+ */
+function updateFaces(faces)  {
+	var result = [];
+	for (var f = 0; f < faces.length; f++) {
+		var count = 0;
+		for (var t = 0; t < faces.length; t++) {
+			if(f !== t) {
+				if(compareArrays(faces[f],faces[t])) {
+					count++;
+				}
+			}
+		}	
+		if (count === 0)
+			result.push(faces[f]);
+	}
+
+	return result;
+}
+
+/*
+ * the main function to add the external facets to a model composed by cubes
+ */
+function addExtFacetsToModel(model) {
+	var extFacets = getExtFaces(model);
+	for(var i = 0; i < extFacets.length; i++)
+   		model.cells.push(extFacets[i]);
+   	return model;
+}

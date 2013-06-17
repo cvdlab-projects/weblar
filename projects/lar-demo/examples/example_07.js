@@ -299,9 +299,62 @@ e.draw();
 
 });
 
+//STEP29
+step(function () {
+
+e.hide();
+
+d = nn(5)
+m1 = lar.Model(d[0],d[1]);
+m1.draw();
+
+});
+
+//STEP30
+step(function () {
+
+m1.hide();
+
+m2 = larProduct(m1, m1);
+m2.draw();
+
+});
+
+//STEP31
+step(function () {
+
+m2.hide();
+
+m3 = larProduct(m2, m1);
+m3.draw();
+
+});
+
+//STEP32
+step(function () {
+
+m3.hide();
+
+m3 = addExtFacetsToModel(m3);
+m4 = larFacets_simple(m3,3,true);
+m4.draw();
+
+});
+
+//STEP32
+step(function () {
+
+m4.hide();
+
+e = EXPLODE([2,2,2])(m4);
+e.draw();
+
+});
+
 // FINAL STEP
 step(function () {
 
+e.hide();
 //the end :)
 
 });

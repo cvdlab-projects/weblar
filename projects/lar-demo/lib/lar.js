@@ -578,6 +578,9 @@
 
   var Model = 
   lar.Model = function (vertices, cells) { 
+    if (!(this instanceof lar.Model)) {
+      return new lar.Model(vertices, cells);
+    }
     this.vertices = vertices;
     if (cells !== undefined && cells !== null && cells.length > 0) {
       this.empty = false;

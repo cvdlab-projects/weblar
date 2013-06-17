@@ -36,13 +36,38 @@ function larProduct(model1, model2) {
 		}
 	}
 
-	cells = new Array();
-	for (var c1=0; c1<cells1.length; c1++) {
+	var cells = new Array();
+	// for (var c1=0; c1<cells1.length; c1++) {
 		
-		for (var c2=0; c2<cells2.length; c2++) {
-			cell = new Array();
-			for (var v=0; v<cells1[c1].length; v++) {
-				for (var w=0; w<cells2[c2].length; w++) {
+	// 	for (var c2=0; c2<cells2.length; c2++) {
+	// 		var cell = new Array();
+	// 		for (var v=0; v<cells1[c1].length; v++) {
+	// 			for (var w=0; w<cells2[c2].length; w++) {
+	// 				var vertex = V[v];
+	// 				vertex = vertex.concat(W[w]);
+	// 				cell.push(verts[hash_function(vertex)]);
+	// 			}
+	// 		}
+	// 		cell.sort(function(a,b){return a-b});
+
+	// 		var clone = JSON.parse(JSON.stringify(cell));
+	// 		console.log(clone);
+	// 		cells.push(clone);
+	// 	}
+		
+	// }
+
+	for (var i1=0; i1<cells1.length; i1++) {
+		var c1=cells1[i1];
+
+		for (var i2=0; i2<cells2.length; i2++) {
+			var c2=cells2[i2];
+
+			var cell = new Array();
+			for (var iv=0; iv<c1.length; iv++) {
+				var v = c1[iv];
+				for (var iw=0; iw<c2.length; iw++) {
+					var w = c2[iw];
 					var vertex = V[v];
 					vertex = vertex.concat(W[w]);
 					cell.push(verts[hash_function(vertex)]);
@@ -64,12 +89,13 @@ function larProduct(model1, model2) {
  */
 
 function hash_function(array) {
-	var result = "";
-	for (var i=0; i<array.length-1; i++) {
-		result += (new String(array[i])) + "_";
-	}
-	result += (new String(array[i]));
-	return result;
+//	var result = "";
+//	for (var i=0; i<array.length-1; i++) {
+//		result += (new String(array[i])) + "_";
+//	}
+//	result += (new String(array[i]));
+//	return result;
+return array.join('_');
 }
 
 /*
@@ -82,8 +108,47 @@ function hash_function(array) {
  */
 
 function get_keys_from_verts(verts) {
-	var keys = new Array();
-	for (var k in verts)
-		keys.push(k.split("_"));
-	return keys;
+	return Object.keys(verts).map(function (str) {
+		return str.split('_').map(function (s) {
+			return +s;
+		});
+	})
+	// var keys = new Array();
+	// for (var k in verts)
+	// 	keys.push(k.split("_"));
+	// return keys;
 }
+
+/*
+ * a function to create a concatenation of "n" vectors
+ *
+ */
+function nn(n) {
+	var i = 0;
+	var verts = [];
+	var cells = [];
+	for (i = 0; i < n; i++) {
+		verts.push([i]);
+		cells.push([i,i+1]);
+	}
+	cells.pop();
+	return [verts, cells];
+}
+
+/*
+ * a function to create "n/2" spaced vectors
+ *
+ */
+function ns(n) {
+	var i = 0;
+	var verts = [];
+	var cells = [];
+	for (i = 0; i < n; i++) {
+		verts.push([i]);
+		if (i % 2 == 0) {
+			cells.push([i,i+1]);
+		}
+	}
+	return [verts, cells];
+}
+

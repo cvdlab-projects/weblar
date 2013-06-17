@@ -80,29 +80,31 @@ m3.hide();
 //STEP 07
 step(function () {
 
-// ESEMPIO DI USO BASE: UN TRIANGOLO (input = celle)
-model = new lar.Model([ [1,0,0],[0,1,0],[0,0,0] ], [ [0,1,2],[0,1],[1,2],[0,2] ]);
-m = larFacets_simple(model, 2, true);
-m.draw();
+// ESEMPIO 5: UN VETTORE E UN QUADRATO, IL CUI PRODOTTO è UN CUBO
+v1 = [[0.0, 0.0], [0.0, 1.0], [1.0, 0.0], [1.0, 1.0]]
+c1 = [[0, 1, 2, 3]];
+m1 = new lar.Model(v1, c1);
+
+v2 = [[0.0, 1.0], [1.0, 1.0]]
+c2 = [[0, 1]];
+m2 = new lar.Model(v2, c2);
+m3 = larProduct(m1, m2);
+m3.draw();
 
 });
 
 //STEP 08
 step(function () {
 
-m.hide();
-e = EXPLODE([2,2,2])(m);
-e.draw();
+m3.hide();
 
 });
 
 //STEP 09
 step(function () {
 
-// ALTRO ESEMPIO, DUE TRIANGOLI (input = celle)
-e.hide();
-
-model = new lar.Model([ [0,0,0],[2,0,0],[2,2,0],[0,2,0] ], [ [0,1,3],[1,2,3],[0,1],[0,3],[2,3],[1,2] ]);
+// ESEMPIO DI USO BASE: UN TRIANGOLO (input = celle)
+model = new lar.Model([ [1,0,0],[0,1,0],[0,0,0] ], [ [0,1,2],[0,1],[1,2],[0,2] ]);
 m = larFacets_simple(model, 2, true);
 m.draw();
 
@@ -120,10 +122,11 @@ e.draw();
 //STEP 11
 step(function () {
 
-// ESEMPIO: DUE QUADRATI (input = Md)
+// ALTRO ESEMPIO, DUE TRIANGOLI (input = celle)
 e.hide();
-m = larFacets_simple([ [ [0,0,0],[0,1,0],[1,1,0],[1,0,0],[2,1,0],[2,0,0] ], 
-	[ [1,1,1,1,0,0],[0,0,1,1,1,1],[1,1,0,0,0,0],[0,1,1,0,0,0],[0,0,1,0,1,0],[0,0,0,0,1,1],[0,0,0,1,0,1],[1,0,0,1,0,0] ] ], 2, false);
+
+model = new lar.Model([ [0,0,0],[2,0,0],[2,2,0],[0,2,0] ], [ [0,1,3],[1,2,3],[0,1],[0,3],[2,3],[1,2] ]);
+m = larFacets_simple(model, 2, true);
 m.draw();
 
 });
@@ -140,10 +143,10 @@ e.draw();
 //STEP 13
 step(function () {
 
-// ESEMPIO COMPLESSO: UN CUBO (input = Md)
+// ESEMPIO: DUE QUADRATI (input = Md)
 e.hide();
-m = larFacets_simple([ [ [0,0,0],[1,0,0],[1,1,0],[0,1,0],[0,1,1],[1,1,1],[1,0,1],[0,0,1] ], 
-	[ [1,1,1,1,1,1,1,1],[1,1,1,1,0,0,0,0],[0,1,1,0,0,1,1,0],[0,0,1,1,1,1,0,0],[1,0,0,1,1,0,0,1],[1,1,0,0,0,0,1,1],[0,0,0,0,1,1,1,1] ] ], 3, false);
+m = larFacets_simple([ [ [0,0,0],[0,1,0],[1,1,0],[1,0,0],[2,1,0],[2,0,0] ], 
+	[ [1,1,1,1,0,0],[0,0,1,1,1,1],[1,1,0,0,0,0],[0,1,1,0,0,0],[0,0,1,0,1,0],[0,0,0,0,1,1],[0,0,0,1,0,1],[1,0,0,1,0,0] ] ], 2, false);
 m.draw();
 
 });
@@ -160,12 +163,10 @@ e.draw();
 //STEP 15
 step(function () {
 
-// ESEMPIO: DUE CUBI ATTACCATI (input = Md)
+// ESEMPIO COMPLESSO: UN CUBO (input = Md)
 e.hide();
-m = larFacets_simple([ [ [0,0,0],[1,0,0],[1,1,0],[0,1,0],[0,1,1],[1,1,1],[1,0,1],[0,0,1],[1,2,0],[0,2,0],[0,2,1],[1,2,1] ], 
-	[ [1,1,1,1,1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0,0,0,0,0],[0,1,1,0,0,1,1,0,0,0,0,0],[1,0,0,1,1,0,0,1,0,0,0,0],[1,1,0,0,0,0,1,1,0,0,0,0],[0,0,0,0,1,1,1,1,0,0,0,0]
-,[0,0,1,0,0,1,0,0,1,0,0,1],[0,0,1,1,0,0,0,0,1,1,0,0],[0,0,0,0,0,0,0,0,1,1,1,1],[0,0,0,1,1,0,0,0,0,1,1,0],[0,0,0,0,1,1,0,0,0,0,1,1],[0,0,1,1,1,1,0,0,1,1,1,1]
-	 ] ], 3, false);
+m = larFacets_simple([ [ [0,0,0],[1,0,0],[1,1,0],[0,1,0],[0,1,1],[1,1,1],[1,0,1],[0,0,1] ], 
+	[ [1,1,1,1,1,1,1,1],[1,1,1,1,0,0,0,0],[0,1,1,0,0,1,1,0],[0,0,1,1,1,1,0,0],[1,0,0,1,1,0,0,1],[1,1,0,0,0,0,1,1],[0,0,0,0,1,1,1,1] ] ], 3, false);
 m.draw();
 
 });
@@ -182,19 +183,21 @@ e.draw();
 //STEP 17
 step(function () {
 
-// ESEMPIO: UNA PIRAMIDE
+// ESEMPIO: DUE CUBI ATTACCATI (input = Md)
 e.hide();
-m = new lar.Model([[0,0,0],[1,0,0],[0,1,0],[0,0,1]],[[0,1,2,3]]);
-f = larFacets(m, 3);
-f.draw();
+m = larFacets_simple([ [ [0,0,0],[1,0,0],[1,1,0],[0,1,0],[0,1,1],[1,1,1],[1,0,1],[0,0,1],[1,2,0],[0,2,0],[0,2,1],[1,2,1] ], 
+	[ [1,1,1,1,1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0,0,0,0,0],[0,1,1,0,0,1,1,0,0,0,0,0],[1,0,0,1,1,0,0,1,0,0,0,0],[1,1,0,0,0,0,1,1,0,0,0,0],[0,0,0,0,1,1,1,1,0,0,0,0]
+,[0,0,1,0,0,1,0,0,1,0,0,1],[0,0,1,1,0,0,0,0,1,1,0,0],[0,0,0,0,0,0,0,0,1,1,1,1],[0,0,0,1,1,0,0,0,0,1,1,0],[0,0,0,0,1,1,0,0,0,0,1,1],[0,0,1,1,1,1,0,0,1,1,1,1]
+	 ] ], 3, false);
+m.draw();
 
 });
 
 //STEP 18
 step(function () {
 
-f.hide();
-e = EXPLODE([2,2,2])(f);
+m.hide();
+e = EXPLODE([2,2,2])(m);
 e.draw();
 
 });
@@ -202,10 +205,9 @@ e.draw();
 //STEP 19
 step(function () {
 
-// ESEMPIO: CUBO FATTO DI CELLE TRIANGOLARI
+// ESEMPIO: UNA PIRAMIDE
 e.hide();
-m = new lar.Model([ [0,0,0],[1,0,0],[1,1,0],[0,1,0],[0,1,1],[1,1,1],[1,0,1],[0,0,1] ], 
-	[ [6,5,2,4],[1,2,6,3],[6,2,3,4],[6,7,4,3],[6,7,1,3],[0,7,1,3] ]);
+m = new lar.Model([[0,0,0],[1,0,0],[0,1,0],[0,0,1]],[[0,1,2,3]]);
 f = larFacets(m, 3);
 f.draw();
 
@@ -223,23 +225,16 @@ e.draw();
 //STEP 21
 step(function () {
 
-//ESEMPIO: SIMPLESSOFRATTALE 2D
+// ESEMPIO: CUBO FATTO DI CELLE TRIANGOLARI
 e.hide();
-fSimplex2D = fractalSimplex(2,3,5)
-fSimplex2D.draw();
-
-});
-
-//STEP 22
-step(function () {
-
-fSimplex2D.hide();
-f = larFacets(fSimplex2D, 2);
+m = new lar.Model([ [0,0,0],[1,0,0],[1,1,0],[0,1,0],[0,1,1],[1,1,1],[1,0,1],[0,0,1] ], 
+	[ [6,5,2,4],[1,2,6,3],[6,2,3,4],[6,7,4,3],[6,7,1,3],[0,7,1,3] ]);
+f = larFacets(m, 3);
 f.draw();
 
 });
 
-//STEP 23
+//STEP 22
 step(function () {
 
 f.hide();
@@ -248,7 +243,35 @@ e.draw();
 
 });
 
+//STEP 23
+step(function () {
+
+//ESEMPIO: SIMPLESSOFRATTALE 2D
+e.hide();
+fSimplex2D = fractalSimplex(2,3,5)
+fSimplex2D.draw();
+
+});
+
 //STEP 24
+step(function () {
+
+fSimplex2D.hide();
+f = larFacets(fSimplex2D, 2);
+f.draw();
+
+});
+
+//STEP 25
+step(function () {
+
+f.hide();
+e = EXPLODE([2,2,2])(f);
+e.draw();
+
+});
+
+//STEP 26
 step(function () {
 
 //ESEMPIO: SIMPLESSOFRATTALE 3D
@@ -258,7 +281,7 @@ fSimplex3D.draw();
 
 });
 
-//STEP 25
+//STEP 27
 step(function () {
 
 fSimplex3D.hide();
@@ -267,7 +290,7 @@ f.draw();
 
 });
 
-//STEP 26
+//STEP 28
 step(function () {
 
 f.hide();

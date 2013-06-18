@@ -351,6 +351,56 @@ e.draw();
 
 });
 
+
+//STEP33
+step(function () {
+
+e.hide();
+
+d = ns(10)
+m1 = lar.Model(d[0],d[1]);
+m1.draw();
+
+});
+
+//STEP34
+step(function () {
+
+m1.hide();
+
+m2 = larProduct(m1, m1);
+m2.draw();
+
+});
+
+//STEP35
+step(function () {
+
+m2.hide();
+
+m3 = larProduct(m2, m1);
+
+});
+
+//STEP36
+step(function () {
+
+m3 = addExtFacetsToModel(m3);
+m4 = larFacets_simple(m3,3,true);
+m4.draw();
+
+});
+
+//STEP37
+step(function () {
+
+m4.hide();
+
+e = EXPLODE([2,2,2])(m4);
+e.draw();
+
+});
+
 // FINAL STEP
 step(function () {
 

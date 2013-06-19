@@ -152,3 +152,11 @@ function ns(n) {
 	return [verts, cells];
 }
 
+function myGetTime() {
+    var dd = new Date();
+    var hh = dd.getHours();
+    var mm = dd.getMinutes();
+    var ss = dd.getSeconds();
+    var ms = dd.getMilliseconds();
+    console.log("The time is now: " + hh + ":" + mm + ":" + ss + " - MS:" + ms);
+}

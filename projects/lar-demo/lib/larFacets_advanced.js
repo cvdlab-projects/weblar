@@ -29,10 +29,10 @@ function larFacets(model, dim) {
 
 	var csr_Md_trans = csr_Md.transpose();
 
-   	//var product = matrix_util_accel.csr_product(csr_Md, csr_Md_trans);
+   	var product = matrix_util_accel.csr_product(csr_Md, csr_Md_trans);
    	
    	// Uncomment this line and comment the line above if the "Matrix computation web-service" is offline
-	var product = csr_Md.multiply(csr_Md_trans);
+	//var product = csr_Md.multiply(csr_Md_trans);
 
 	var new_cells_binary = [];
 

@@ -314,17 +314,14 @@ m1.draw();
 step(function () {
 
 m1.hide();
-
 m2 = larProduct(m1, m1);
 m2.draw();
-
 });
 
 //STEP31
 step(function () {
 
 m2.hide();
-
 m3 = larProduct(m2, m1);
 m3.draw();
 
@@ -367,7 +364,6 @@ m1.draw();
 step(function () {
 
 m1.hide();
-
 m2 = larProduct(m1, m1);
 m2.draw();
 
@@ -377,9 +373,7 @@ m2.draw();
 step(function () {
 
 m2.hide();
-
 m3 = larProduct(m2, m1);
-
 });
 
 //STEP36

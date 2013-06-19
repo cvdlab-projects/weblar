@@ -28,10 +28,10 @@ function larFacets_simple(model, dim, bool) {
 
 	var csr_Md_trans = csr_Md.transpose();
 
-    //var product = matrix_util_accel.csr_product(csr_Md, csr_Md_trans);
+    var product = matrix_util_accel.csr_product(csr_Md, csr_Md_trans);
 
     // Uncomment this line and comment the line above if the "Matrix computation web-service" is offline
-	var product = csr_Md.multiply(csr_Md_trans);
+	//var product = csr_Md.multiply(csr_Md_trans);
 
 	var new_cells_binary = [];
 
@@ -157,58 +157,6 @@ function updateFaces(faces)  {
 			result.push(faces[f]);
 	}
 
-	return result;
-}
-
-/*
- * a function to eliminate the internal facets from a model composed by cubes
- *
- */
-function updateFaces2(verts, faces)  {
-	var result = [];
-	var x_max = 0;
-	var y_max = 0;
-	var z_max = 0;
-	var x_min = 0;
-	var y_min = 0;
-	var z_min = 0;
-	for (var f = 0; f < faces.length; f++) {
-		for (var v in f) {
-			var vert = verts[v];
-			if(vert[0] < x_min)
-				x_min = vert[0];
-			if(vert[0] > x_max)
-				x_max = vert[0];
-			if(vert[1] < y_min)
-				y_min = vert[1];
-			if(vert[1] > y_max)
-				y_max = vert[1];
-			if(vert[2] < z_min)
-				z_min = vert[2];
-			if(vert[2] > z_max)
-				z_max = vert[2];
-		}
-	}
-
-	for (var f2 = 0; f2 < faces.length; f2++) {
-		var bool = false;
-		for (var v2 in f2) {
-			var vert2 = verts[v2];
-			console.log(vert2);
-			if(vert2[0]===x_min || vert2[0]===x_max)
-				bool = true;
-			else {
-				if(vert2[1]===y_min || vert2[1]===y_max)
-					bool = true;
-				else {
-					if(vert2[2]===z_min || vert2[2]===z_max)
-						bool = true;
-				}
-			}
-		}
-		if(bool)
-			result.push(faces[f2]);
-	}
 	return result;
 }
 

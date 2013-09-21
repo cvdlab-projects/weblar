@@ -2,7 +2,7 @@
 
 *Contributors*: Luca Menichetti e Fabrizio Rebecca
 
-Web service that provides fast matrix computation over the web. See this document for more information. (TODO add link)
+Web service that provides fast matrix computation over the web. See [this document](http://cvdlab-bio.github.io/weblar/matrix-web-service/slide/170613.Matrix.Computation.WebService.pdf) for more information.
 
 ## What it provides
 

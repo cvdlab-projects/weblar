@@ -8,6 +8,6 @@ Web service that provides fast matrix computation over the web. See this documen
 
 For now you can do CSR <=> COO <=> DENSE conversion locally, and CSR product throughout the server.
 
-### Remember to check the web service is online
+### Remember to check that the web service is online
 
 http://webpdb.dia.uniroma3.it/service/test/networktest

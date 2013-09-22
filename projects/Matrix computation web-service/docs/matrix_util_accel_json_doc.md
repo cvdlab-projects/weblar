@@ -31,7 +31,7 @@ Return a JSON CSR matrix as result.
 
 - - -
 
-### `coo_json_product(coJsonMatrixA,cooJsonMatrixB)`
+### `coo_json_product(cooJsonMatrixA,cooJsonMatrixB)`
 
 Takes two JSON representing two COO matrices, CONVERTS them in a CSR, 
 and send a remote request for the matric product webservice.
@@ -56,3 +56,30 @@ Return a JSON COO matrix as result.
 
 - - -
 
+### `csr_json_to_coo_json(csrJson)`
+
+Converts a CSR JSON matrix in a COOJSON matrix.
+
+#### I/O
+
+> #### in
+> `JSON` `csrJson`: a JSON representing a CSR matrix instance. 
+> 
+> #### out
+> `JSON`: a JSON representing a COO matrix.
+
+- - -
+
+### `coo_json_to_csr_json(cooJson)`
+
+Converts a COO JSON matrix in a CSR JSON matrix.
+
+#### I/O
+
+> #### in
+> `JSON` `cooJson`: a JSON representing a COO matrix instance. 
+> 
+> #### out
+> `JSON`: a JSON representing a CSR matrix.
+
+- - -

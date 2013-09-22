@@ -1,6 +1,6 @@
 # matrix_util_accel.js
 
-**JavaScript library that manages matrix operations in an easy and fast way with different representations.**
+JavaScript library that manages matrix operations in an easy and fast way with different representations.
 
 Dependences: `node-lar-multiply-rest` (online web service), `csr.js`, `coo.js`, `matrix_util_accel_json`.
 
@@ -99,7 +99,7 @@ Starting from two instances of CSR matrices returns their product.
 #### I/O
 
 > #### in
-> `csr_matrix` `csrMatrixA`: a CSR matrix instance
+> `csr_matrix` `csrMatrixA`: a CSR matrix instance  
 > `csr_matrix` `csrMatrixB`: a CSR matrix instance
 > 
 > #### out
@@ -123,7 +123,7 @@ Starting from two instances of COO matrices returns their product.
 #### I/O
 
 > #### in
-> `coo_matrix` `cooMatrixA`: a COO matrix instance
+> `coo_matrix` `cooMatrixA`: a COO matrix instance  
 > `coo_matrix` `cooMatrixB`: a COO matrix instance
 > 
 > #### out
@@ -147,7 +147,7 @@ Starting from two array of array representing two matrices returns their product
 #### I/O
 
 > #### in
-> `Array{Array}` `denseMatrixA`: a dense matrix instance
+> `Array{Array}` `denseMatrixA`: a dense matrix instance  
 > `Array{Array}` `denseMatrixA`: a dense matrix instance
 > 
 > #### out

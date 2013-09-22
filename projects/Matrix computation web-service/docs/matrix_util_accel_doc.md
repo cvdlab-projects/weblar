@@ -2,7 +2,7 @@
 
 JavaScript library that manages matrix operations in an easy and fast way with different representations.
 
-Dependences: `node-lar-multiply-rest` (online web service), `csr.js`, `coo.js`, `matrix_util_accel_json`.
+Dependences: `node-lar-multiply-rest` (web service needs to be running), `csr.js`, `coo.js`, `matrix_util_accel_json`.
 
 - - -
 

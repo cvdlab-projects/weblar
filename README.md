@@ -2,6 +2,12 @@
 
 Web LAR project ([download pdf with project's description](https://github.com/cvdlab-bio/weblar/blob/master/slides/2013-04-11.pdf?raw=true))
 
+## Projects' links
+
+* [Extension of the LAR.js and LAR-DEMO.js](https://github.com/cvdlab-bio/weblar/tree/master/projects/Extension%20of%20the%20LAR.js%20and%20LAR-DEMO.js)
+* [Matrix computation web-service](https://github.com/cvdlab-bio/weblar/tree/master/projects/Matrix%20computation%20web-service)
+* [PDB visualization service](https://github.com/cvdlab-bio/weblar/tree/master/projects/PDB%20visualization%20service)
+
 ## Authors
 
 * Andrea Somma
@@ -14,8 +20,6 @@ Web LAR project ([download pdf with project's description](https://github.com/cv
 [Tasks assignment](https://github.com/cvdlab-bio/weblar/blob/master/projects/README.md)
 
 ## Website
-
-*Under construction*
 
 Web LAR gh-pages:
 
